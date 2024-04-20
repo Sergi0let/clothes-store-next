@@ -3,10 +3,12 @@ import MenuBtn from "./MenuBtn";
 import ShopingCartBtn from "./ShopingCartBtn";
 import FavoriteBtn from "./FavoriteBtn";
 import BannerTop from "./BannerTop";
+import { getCart } from "@/lib/db/cart";
 
-export default function Header() {
+export default async function Header() {
+  const cart = await getCart();
   return (
-    <header className="sticky top-0 z-40">
+    <header className="sticky top-0 z-40 shadow-md">
       <BannerTop />
       <div className="navbar bg-base-100 px-4  md:min-h-[104px]">
         <MenuBtn isOpened={false} className="pr-4 md:hidden" />
@@ -210,7 +212,7 @@ export default function Header() {
               </svg>
             </Link>
             <FavoriteBtn />
-            <ShopingCartBtn />
+            <ShopingCartBtn cart={cart} />
           </div>
         </div>
       </div>

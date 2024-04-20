@@ -1,0 +1,47 @@
+ <svg fill="none" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+      <g clipPath="url(#a)">
+        <mask
+          height="16"
+          id="b"
+          style={{ maskType: "luminance" }}
+          width="16"
+          x="0"
+          y="0"
+          maskUnits="userSpaceOnUse"
+        >
+          <path d="M16 0H0v16h16V0z" fill="#fff" />
+        </mask>
+        <g mask="url(#b)">
+          <path
+            d="M11.095 5.904l-4.193 4.192L4.906 8.1"
+            stroke="#24BF33"
+            strokeLinecap="round"
+            strokeWidth="1.5"
+          />
+          <mask
+            height="16"
+            id="c"
+            style={{ maskType: "luminance" }}
+            width="16"
+            x="0"
+            y="0"
+            maskUnits="userSpaceOnUse"
+          >
+            <path d="M0 0h16v16H0V0z" fill="#fff" />
+          </mask>
+          <g mask="url(#c)">
+            <path
+              d="M15.375 8A7.375 7.375 0 11.625 8a7.375 7.375 0 0114.75 0z"
+              stroke="#24BF33"
+              strokeLinecap="round"
+              strokeWidth="1.5"
+            />
+          </g>
+        </g>
+      </g>
+      <defs>
+        <clipPath id="a">
+          <path d="M0 0h16v16H0z" fill="#fff" />
+        </clipPath>
+      </defs>
+    </svg>

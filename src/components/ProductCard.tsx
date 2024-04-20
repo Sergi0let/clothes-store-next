@@ -1,16 +1,18 @@
-import { formatPrice } from "@/lib/format";
 import Image from "next/image";
-import React from "react";
+
+import { formatPrice } from "@/lib/format";
+import AddToCartBtn from "./AddToCartBtn";
+import { incrementProductQuantity } from '@/app/actions';
 
 type ProductCardProps = {
   name: string;
-  isBestSeller: boolean;
-  isNewProduct: boolean;
   discountPrice: number;
   price: number;
   imageUrl: string;
   id: string;
   description: string;
+  isBestSeller?: boolean;
+  isNewProduct?: boolean;
 };
 
 export default function ProductCard({
@@ -69,6 +71,10 @@ export default function ProductCard({
           {formatPrice(price)}
         </div>
         <div>{description}</div>
+        <AddToCartBtn
+          productId={id}
+          incrementProductQuantity={incrementProductQuantity}
+        />
       </div>
     </div>
   );

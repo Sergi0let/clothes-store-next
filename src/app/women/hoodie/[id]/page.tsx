@@ -1,8 +1,8 @@
+import type { Metadata } from "next";
 import prisma from "@/lib/db/prisma";
 
 import Breadcrumbs from "@/components/Breadcrumbs";
 import ProductCard from "@/components/ProductCard";
-import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Hoodies Page",
