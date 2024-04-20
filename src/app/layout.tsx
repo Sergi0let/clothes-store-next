@@ -3,6 +3,7 @@ import { Poppins } from "next/font/google";
 import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
 import Footer from "@/components/Footer";
+import SessionProvider from "./SessionProvider";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -23,10 +24,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${poppins.className} relative antialiased`}>
-        <Header />
-        {children}
-        <Footer />
-        <Sidebar />
+        <SessionProvider>
+          <Header />
+          {children}
+          <Footer />
+          <Sidebar />
+        </SessionProvider>
       </body>
     </html>
   );
