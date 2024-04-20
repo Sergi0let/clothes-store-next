@@ -5,16 +5,16 @@ import CardListCategory from "@/components/CardListCategory";
 export default async function CategoryPage() {
   const [products, count] = await Promise.all([
     prisma.products.findMany({
-      where: { gender: { equals: "men" }, category: { equals: "jogger" } },
+      where: { gender: "men", category: "jogger" },
     }),
     prisma.products.aggregate({
-      where: { gender: { equals: "men" }, category: { equals: "jogger" } },
+      where: { gender: "men", category: "jogger" },
       _count: true,
     }),
   ]);
 
   return (
-    <div className="m-auto max-w-7xl px-4">
+    <main className="m-auto max-w-7xl px-4">
       <Breadcrumbs
         breadcrumbs={[
           { label: "Home", href: "/" },
@@ -67,6 +67,6 @@ export default async function CategoryPage() {
         </div>
         <CardListCategory productsDisplay={products} />
       </div>
-    </div>
+    </main>
   );
 }

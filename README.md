@@ -43,5 +43,5 @@ npm i daisyui prisma @prisma/client next-auth @auth/prisma-adapter prettier esli
 3. Check DATABASE_URL and fill some data: 'mongodb+srv://<user>:<password>@cluster0.w1tpalg.mongodb.net/<name-you-db>?retryWrites=true&w=majority&appName=Cluster0
 4. In file schema.prisma add current data provider (mongodb, postrgress)
 5. Pull the data from DB collection: npx prisma db pull
-6. Modify model from db add (createdAt, updatedAt) and push to db: npx prisma db push
+6. Modify model from db add (createdAt, updatedAt) and push to db: npx prisma db push and npx prisma generate
 7. Add prisma connection: https://www.prisma.io/docs/orm/more/help-and-troubleshooting/help-articles/nextjs-prisma-client-dev-practices

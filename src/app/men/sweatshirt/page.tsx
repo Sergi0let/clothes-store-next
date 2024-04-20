@@ -5,21 +5,21 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import CardListCategory from "@/components/CardListCategory";
 
 export const metadata: Metadata = {
-  title: "Hoodies page",
-  description: "About men Hoodies",
+  title: "Sweatshirts page",
+  description: "About men sweatshirts",
 };
-export default async function CategoryHoodiesPage() {
+export default async function CategorySweatshirtsPage() {
   const [products, count] = await Promise.all([
     prisma.products.findMany({
       where: {
-        gender: { equals: "men" },
-        category: { equals: "hoodies" },
+        gender: "men",
+        category: "sweatshirt",
       },
     }),
     prisma.products.aggregate({
       where: {
-        gender: { equals: "men" },
-        category: { equals: "hoodies" },
+        gender: "men",
+        category: "sweatshirt",
       },
       _count: true,
     }),

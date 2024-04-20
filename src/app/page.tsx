@@ -1,6 +1,6 @@
-import Card from "@/components/Card";
-import CardList from "@/components/CardList";
 import prisma from "@/lib/db/prisma";
+
+import CardList from "@/components/CardList";
 import Link from "next/link";
 
 export default async function Home() {

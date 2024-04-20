@@ -21,7 +21,7 @@ export default async function HoodiesPage({
   if (!product) return <div>Nothing</div>;
 
   return (
-    <div className="m-auto max-w-7xl px-4">
+    <main className="m-auto max-w-7xl px-4">
       <Breadcrumbs
         breadcrumbs={[
           { label: "Home", href: "/" },
@@ -45,6 +45,6 @@ export default async function HoodiesPage({
         name={product?.name}
         price={product?.price}
       />
-    </div>
+    </main>
   );
 }

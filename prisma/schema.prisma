@@ -19,6 +19,7 @@ model Products {
   isAvailableForPurchase Boolean
   isBestSeller           Boolean
   isNewProduct           Boolean
+  amount                 String   @default("0")
   createdAt              DateTime @default(now())
   updatedAt              DateTime @updatedAt
 

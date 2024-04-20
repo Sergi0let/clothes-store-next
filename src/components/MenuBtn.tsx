@@ -24,7 +24,7 @@ export default function MenuBtn({
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <g clip-path="url(#clip0_102_6958)">
+          <g clipPath="url(#clip0_102_6958)">
             <path
               d="M20 1.67833L18.8217 0.5L10 9.32167L1.17833 0.5L0 1.67833L8.82167 10.5L0 19.3217L1.17833 20.5L10 11.6783L18.8217 20.5L20 19.3217L11.1783 10.5L20 1.67833Z"
               fill="#161616"

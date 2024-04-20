@@ -1,7 +1,12 @@
+"use client";
+
 import Link from "next/link";
 import MenuBtn from "./MenuBtn";
 
 export default function Sidebar() {
+  function closeSidebar() {
+    document.body.classList.remove("openSidebar");
+  }
   return (
     <aside className="z-50 hidden">
       <div className="overflow-auto bg-base-100">
@@ -14,16 +19,24 @@ export default function Sidebar() {
           <div className="pl-5 text-xl font-medium uppercase">MEN</div>
           <ul className="space-y-5 pl-9 pt-5">
             <li>
-              <Link href="/men/shirts">Shirts</Link>
+              <Link onClick={closeSidebar} href="/men/shirt">
+                Shirts
+              </Link>
             </li>
             <li>
-              <Link href="/men/sweatshirts">Sweatshirts</Link>
+              <Link onClick={closeSidebar} href="/men/sweatshirt">
+                Sweatshirts
+              </Link>
             </li>
             <li>
-              <Link href="/men/hoodies">Hoodies</Link>
+              <Link onClick={closeSidebar} href="/men/hoodie">
+                Hoodies
+              </Link>
             </li>
             <li>
-              <Link href="/men/joggers">Joggers & Shorts</Link>
+              <Link onClick={closeSidebar} href="/men/jogger">
+                Joggers & Shorts
+              </Link>
             </li>
           </ul>
         </div>
@@ -32,16 +45,24 @@ export default function Sidebar() {
           <div className="pl-5 text-xl font-medium uppercase">WOMEN</div>
           <ul className="space-y-5 pl-9 pt-5">
             <li>
-              <Link href="/women/shirts">Shirts</Link>
+              <Link onClick={closeSidebar} href="/women/shirt">
+                Shirts
+              </Link>
             </li>
             <li>
-              <Link href="/men/sweatshirts">Sweatshirts</Link>
+              <Link onClick={closeSidebar} href="/men/sweatshirt">
+                Sweatshirts
+              </Link>
             </li>
             <li>
-              <Link href="/women/hoodies">Hoodies</Link>
+              <Link onClick={closeSidebar} href="/women/hoodie">
+                Hoodies
+              </Link>
             </li>
             <li>
-              <Link href="/women/joggers">Joggers & Shorts</Link>
+              <Link onClick={closeSidebar} href="/women/jogger">
+                Joggers & Shorts
+              </Link>
             </li>
           </ul>
         </div>

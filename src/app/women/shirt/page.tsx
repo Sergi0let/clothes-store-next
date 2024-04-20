@@ -11,16 +11,16 @@ export const metadata: Metadata = {
 export default async function CategoryShirtPage() {
   const [products, count] = await Promise.all([
     prisma.products.findMany({
-      where: { gender: { equals: "women" }, category: { equals: "shirt" } },
+      where: { gender: "women", category: "shirt" },
     }),
     prisma.products.aggregate({
-      where: { gender: { equals: "women" }, category: { equals: "shirt" } },
+      where: { gender: "women", category: "shirt" },
       _count: true,
     }),
   ]);
 
   return (
-    <div className="m-auto max-w-7xl px-4">
+    <main className="m-auto max-w-7xl px-4">
       <Breadcrumbs
         breadcrumbs={[
           { label: "Home", href: "/" },
@@ -73,6 +73,6 @@ export default async function CategoryShirtPage() {
         </div>
         <CardListCategory productsDisplay={products} />
       </div>
-    </div>
+    </main>
   );
 }

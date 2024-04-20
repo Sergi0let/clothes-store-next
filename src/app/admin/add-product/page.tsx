@@ -1,6 +1,5 @@
 import prisma from "@/lib/db/prisma";
 import SubminBtn from "./_component/SubminBtn";
-import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 
 export const metadata = {
@@ -19,6 +18,7 @@ async function addProduct(formData: FormData) {
   const imageUrl = formData.get("imageUrl")?.toString();
   const isNewProduct = formData.get("isNewProduct") === "true";
   const isBestSeller = formData.get("isBestSeller") === "true";
+  const amount = formData.get("amount")?.toString() || "0";
 
   console.log(formData);
 
@@ -38,6 +38,7 @@ async function addProduct(formData: FormData) {
       isAvailableForPurchase: true,
       isBestSeller,
       isNewProduct,
+      amount,
     },
   });
 
@@ -99,6 +100,8 @@ export default function AddProductPage() {
           >
             <option value={"shirt"}>Shirt</option>
             <option value={"jogger"}>Joggers</option>
+            <option value={"sweatshirt"}>Sweatshirts</option>
+            <option value={"hoodie"}>Hoodies</option>
           </select>
         </label>
 
@@ -116,6 +119,21 @@ export default function AddProductPage() {
             className="textarea textarea-bordered textarea-primary h-24"
             placeholder="Enter a detailed description of the product here.."
           ></textarea>
+        </label>
+
+        <label className="max-w-fill form-control w-full">
+          <div className="label">
+            <span className="label-text">How many products?</span>
+            <span className="label-text-alt">amount</span>
+          </div>
+          <input
+            required
+            name="amount"
+            id="amount"
+            type="number"
+            placeholder="Amount"
+            className="input input-bordered input-primary w-full"
+          />
         </label>
 
         <div className="flex flex-col gap-2 sm:flex-row">

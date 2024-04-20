@@ -6,20 +6,20 @@ import CardListCategory from "@/components/CardListCategory";
 
 export const metadata: Metadata = {
   title: "Hoodies page",
-  description: "About women Hoodies",
+  description: "About men Hoodies",
 };
 export default async function CategoryHoodiesPage() {
   const [products, count] = await Promise.all([
     prisma.products.findMany({
       where: {
-        gender: { equals: "women" },
-        category: { equals: "hoodies" },
+        gender: "men",
+        category: "hoodie",
       },
     }),
     prisma.products.aggregate({
       where: {
-        gender: { equals: "women" },
-        category: { equals: "hoodies" },
+        gender: "men",
+        category: "hoodie",
       },
       _count: true,
     }),
@@ -31,8 +31,8 @@ export default async function CategoryHoodiesPage() {
         breadcrumbs={[
           { label: "Home", href: "/" },
           {
-            label: "Women",
-            href: "/women",
+            label: "men",
+            href: "/men",
           },
         ]}
       />

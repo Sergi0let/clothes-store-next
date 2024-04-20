@@ -6,39 +6,42 @@ import CardListCategory from "@/components/CardListCategory";
 
 export const metadata: Metadata = {
   title: "Sweatshirts page",
-  description: "About men sweatshirts",
+  description: "About women sweatshirts",
 };
+
 export default async function CategorySweatshirtsPage() {
   const [products, count] = await Promise.all([
     prisma.products.findMany({
       where: {
-        gender: { equals: "sweatshirts" },
-        category: { equals: "sweatshirts" },
+        gender: "women",
+        category: "sweatshirt",
       },
     }),
     prisma.products.aggregate({
       where: {
-        gender: { equals: "men" },
-        category: { equals: "sweatshirts" },
+        gender: "women",
+        category: "sweatshirt",
       },
       _count: true,
     }),
   ]);
 
   return (
-    <div className="m-auto max-w-7xl px-4">
+    <main className="m-auto max-w-7xl px-4">
       <Breadcrumbs
         breadcrumbs={[
           { label: "Home", href: "/" },
           {
-            label: "men",
-            href: "/men",
+            label: "Women",
+            href: "/women",
           },
         ]}
       />
 
       <div className="mb-6 gap-6 md:mb-12 md:flex">
-        <h1 className="text-2xl font-medium uppercase md:text-4xl">Shirts</h1>
+        <h1 className="text-2xl font-medium uppercase md:text-4xl">
+          Sweatshirts
+        </h1>
         <div className="text-lg md:content-end md:align-bottom">
           {count._count || 0} Products
         </div>
@@ -79,6 +82,6 @@ export default async function CategorySweatshirtsPage() {
         </div>
         <CardListCategory productsDisplay={products} />
       </div>
-    </div>
+    </main>
   );
 }

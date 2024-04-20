@@ -15,7 +15,7 @@ export default async function WomenPage() {
   ]);
 
   return (
-    <div className="m-auto max-w-7xl px-4">
+    <main className="m-auto max-w-7xl px-4">
       <Breadcrumbs
         breadcrumbs={[
           { label: "Home", href: "/" },
@@ -69,6 +69,6 @@ export default async function WomenPage() {
         </div>
         <CardListCategory productsDisplay={products} />
       </div>
-    </div>
+    </main>
   );
 }

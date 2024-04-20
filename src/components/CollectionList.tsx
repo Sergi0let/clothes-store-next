@@ -21,7 +21,7 @@ export default function CollectionList({ gender }: { gender: string }) {
         </span>
       </Link>
       <Link
-        href={`/${gender}/sweatshirts?category=sweatshirts`}
+        href={`/${gender}/sweatshirt`}
         className="relative block max-w-[312px] object-contain "
       >
         <Image
@@ -36,7 +36,7 @@ export default function CollectionList({ gender }: { gender: string }) {
         </span>
       </Link>
       <Link
-        href={`/${gender}/hoodies?category=hoodies`}
+        href={`/${gender}/hoodie`}
         className="relative block max-w-[312px] object-contain "
       >
         <Image

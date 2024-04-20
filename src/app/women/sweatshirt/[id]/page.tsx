@@ -1,12 +1,12 @@
-import type { Metadata } from "next";
 import prisma from "@/lib/db/prisma";
 
 import Breadcrumbs from "@/components/Breadcrumbs";
 import ProductCard from "@/components/ProductCard";
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "sweatshirts Page",
-  description: "About men shirt",
+  description: "About women shirt",
 };
 
 export default async function SweatshirtsPage({
@@ -21,17 +21,17 @@ export default async function SweatshirtsPage({
   if (!product) return <div>Nothing</div>;
 
   return (
-    <div className="m-auto max-w-7xl px-4">
+    <main className="m-auto max-w-7xl px-4">
       <Breadcrumbs
         breadcrumbs={[
           { label: "Home", href: "/" },
           {
-            label: "Men",
-            href: "/men",
+            label: "Women",
+            href: "/women",
           },
           {
             label: "Sweatshirts",
-            href: "/men/sweatshirts",
+            href: "/women/sweatshirt",
           },
         ]}
       />
@@ -45,6 +45,6 @@ export default async function SweatshirtsPage({
         name={product?.name}
         price={product?.price}
       />
-    </div>
+    </main>
   );
 }
