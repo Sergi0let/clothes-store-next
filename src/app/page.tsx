@@ -1,4 +1,4 @@
-import prisma from "@/lib/db/prisma";
+import { prisma } from "@/lib/db/prisma";
 
 import CardList from "@/components/CardList";
 import Link from "next/link";

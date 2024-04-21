@@ -1,6 +1,6 @@
 import Breadcrumbs from "@/components/Breadcrumbs";
 import CardListCategory from "@/components/CardListCategory";
-import prisma from "@/lib/db/prisma";
+import { prisma } from "@/lib/db/prisma";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {

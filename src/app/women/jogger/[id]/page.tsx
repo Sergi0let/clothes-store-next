@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import prisma from "@/lib/db/prisma";
+import { prisma } from "@/lib/db/prisma";
 
 import Breadcrumbs from "@/components/Breadcrumbs";
 import ProductCard from "@/components/ProductCard";

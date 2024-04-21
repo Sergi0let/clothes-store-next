@@ -1,5 +1,5 @@
 import ProductCard from "@/components/ProductCard";
-import prisma from "@/lib/db/prisma";
+import { prisma } from "@/lib/db/prisma";
 import React from "react";
 
 export default async function ProductPage({

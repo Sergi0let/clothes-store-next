@@ -1,7 +1,7 @@
 import Breadcrumbs from "@/components/Breadcrumbs";
 import CardListCategory from "@/components/CardListCategory";
 import CollectionList from "@/components/CollectionList";
-import prisma from "@/lib/db/prisma";
+import { prisma } from "@/lib/db/prisma";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";

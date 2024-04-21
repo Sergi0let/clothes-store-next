@@ -2,7 +2,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import CardListCategory from "@/components/CardListCategory";
 import CollectionList from "@/components/CollectionList";
 import ProductCard from "@/components/ProductCard";
-import prisma from "@/lib/db/prisma";
+import { prisma } from "@/lib/db/prisma";
 
 export default async function CategoryPage({
   searchParams: { id },

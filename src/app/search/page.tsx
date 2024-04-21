@@ -1,7 +1,8 @@
+import { Metadata } from "next";
+import { prisma } from "@/lib/db/prisma";
+
 import CardList from "@/components/CardList";
 import Search from "@/components/Search";
-import prisma from "@/lib/db/prisma";
-import { Metadata } from "next";
 
 type SearchPageProps = {
   searchParams: { query: string };
