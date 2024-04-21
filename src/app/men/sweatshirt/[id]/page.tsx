@@ -36,6 +36,7 @@ export default async function SweatshirtsPage({
         ]}
       />
       <ProductCard
+        amount={product?.amount}
         description={product?.description}
         discountPrice={product?.discountPrice}
         id={product.id}

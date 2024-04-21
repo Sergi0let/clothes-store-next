@@ -30,6 +30,7 @@ export default async function CategoryPage({
         ]}
       />
       <ProductCard
+        amount={product?.amount}
         description={product?.description}
         discountPrice={product?.discountPrice}
         id={product.id}
