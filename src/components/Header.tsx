@@ -1,12 +1,12 @@
 import { getServerSession } from "next-auth";
 import Link from "next/link";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { getCart } from "@/lib/db/cart";
 import MenuBtn from "./MenuBtn";
 import ShopingCartBtn from "./ShopingCartBtn";
 import FavoriteBtn from "./FavoriteBtn";
 import BannerTop from "./BannerTop";
 import UserMenuBtn from "./UserMenuBtn";
+import authOptions from "@/utils/authOptions";
 
 export default async function Header() {
   const cart = await getCart();
