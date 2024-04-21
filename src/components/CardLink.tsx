@@ -1,8 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import React from "react";
 
 export default function CardLink({
   name,
@@ -15,9 +13,6 @@ export default function CardLink({
   category: string;
   gender: string;
 }) {
-  const path = usePathname();
-  console.log("path", path);
-
   return (
     <Link
       href={`/${gender}/${category}/${id}?id=${id}`}
