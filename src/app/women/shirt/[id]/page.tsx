@@ -10,9 +10,9 @@ export const metadata: Metadata = {
 };
 
 export default async function ShirtPage({
-  searchParams: { id },
+  params: { id },
 }: {
-  searchParams: { id: string };
+  params: { id: string };
 }) {
   const product = await prisma.products.findUnique({
     where: { id: id },

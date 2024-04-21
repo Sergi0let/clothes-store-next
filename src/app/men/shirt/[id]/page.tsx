@@ -1,13 +1,11 @@
 import Breadcrumbs from "@/components/Breadcrumbs";
-import CardListCategory from "@/components/CardListCategory";
-import CollectionList from "@/components/CollectionList";
 import ProductCard from "@/components/ProductCard";
 import { prisma } from "@/lib/db/prisma";
 
 export default async function CategoryPage({
-  searchParams: { id },
+  params: { id },
 }: {
-  searchParams: { id: string };
+  params: { id: string };
 }) {
   const product = await prisma.products.findUnique({
     where: { id: id },

@@ -4,9 +4,9 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import ProductCard from "@/components/ProductCard";
 
 export default async function CategoryPage({
-  searchParams: { id },
+  params: { id },
 }: {
-  searchParams: { id: string };
+  params: { id: string };
 }) {
   const product = await prisma.products.findUnique({
     where: { id: id },
