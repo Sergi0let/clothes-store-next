@@ -2,10 +2,24 @@ import prisma from "@/lib/db/prisma";
 
 import CardList from "@/components/CardList";
 import Link from "next/link";
+import PaginationBar from "@/components/PaginationBar";
 
-export default async function Home() {
+type HomeProps = {
+  searchParams: { page: string };
+};
+
+export default async function Home({
+  searchParams: { page = "1" },
+}: HomeProps) {
+  const currentPage = parseInt(page);
+  const pageSize = 6;
+  const totalItemCount = await prisma.products.count();
+  const totalPages = Math.ceil(totalItemCount / pageSize);
+
   const products = await prisma.products.findMany({
     orderBy: { createdAt: "desc" },
+    skip: currentPage * pageSize,
+    take: pageSize,
   });
 
   return (
@@ -55,6 +69,11 @@ export default async function Home() {
         </section>
       </div>
       <CardList title="All products" productsDisplay={products} />
+      {totalPages > 1 && (
+        <div className="pb-9 pt-4 text-center md:pb-12">
+          <PaginationBar currentPage={currentPage} totalPages={totalPages} />
+        </div>
+      )}
     </main>
   );
 }
