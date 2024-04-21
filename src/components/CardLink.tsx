@@ -15,7 +15,7 @@ export default function CardLink({
 }) {
   return (
     <Link
-      href={`/${gender}/${category}/${id}?id=${id}`}
+      href={`/${gender}/${category}/${id}`}
       className="mt-4 line-clamp-2 text-base font-medium transition-colors hover:text-blue-800 sm:mt-6 md:text-[18px]"
     >
       {name}
