@@ -3,6 +3,7 @@
 import { prisma } from "@/lib/db/prisma";
 import { createCart, getCart } from "@/lib/db/cart";
 import { revalidatePath } from "next/cache";
+import { createFavorite, getFavorite } from "@/lib/db/favorite";
 
 export async function incrementProductQuantity(productId: string) {
   const cart = (await getCart()) ?? (await createCart());
@@ -36,4 +37,37 @@ export async function incrementProductQuantity(productId: string) {
   }
 
   revalidatePath("/[gender]/[category]/[id]");
+}
+
+export async function addToFavorite(productId: string) {
+  const favorite = (await getFavorite()) ?? (await createFavorite());
+
+  const articleInFavorite = favorite.FavoriteItem.find(
+    (item) => item.productId === productId,
+  );
+
+  if (articleInFavorite) {
+    await prisma.favorite.update({
+      where: { id: favorite.id },
+      data: {
+        FavoriteItem: {
+          deleteMany: {
+            productId,
+          },
+        },
+      },
+    });
+  } else {
+    await prisma.favorite.update({
+      where: { id: favorite.id },
+      data: {
+        FavoriteItem: {
+          create: {
+            productId,
+          },
+        },
+      },
+    });
+  }
+  revalidatePath("/[gender]/[category]");
 }

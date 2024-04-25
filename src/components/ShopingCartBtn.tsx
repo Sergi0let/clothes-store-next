@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 
-import { formatPrice } from "@/lib/format";
 import { ShoppingCart } from "@/lib/db/cart";
 
 type ShopingCartBtnProps = {

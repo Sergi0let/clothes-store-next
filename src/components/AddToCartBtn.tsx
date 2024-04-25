@@ -3,21 +3,24 @@
 import { useState, useTransition } from "react";
 import IconBag from "../assets/bag.svg";
 import Image from "next/image";
+import clsx from "clsx";
 
 type AddToCartBtnProps = {
   productId: string;
+  className?: string;
   incrementProductQuantity: (productId: string) => Promise<void>;
 };
 
 export default function AddToCartBtn({
   productId,
   incrementProductQuantity,
+  className,
 }: AddToCartBtnProps) {
   const [isPending, startTransition] = useTransition();
   const [success, setSuccess] = useState(false);
 
   return (
-    <div className="w-full py-4">
+    <div className={clsx(className, "w-full py-4")}>
       <div className="flex w-full items-center gap-2">
         <button
           className="transition-color relative flex w-full justify-center bg-blue-700 p-4 text-xl font-medium uppercase text-base-100 duration-300 hover:bg-blue-900"

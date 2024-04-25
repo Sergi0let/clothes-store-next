@@ -7,9 +7,11 @@ import FavoriteBtn from "./FavoriteBtn";
 import BannerTop from "./BannerTop";
 import UserMenuBtn from "./UserMenuBtn";
 import authOptions from "@/utils/authOptions";
+import { getFavorite } from "@/lib/db/favorite";
 
 export default async function Header() {
   const cart = await getCart();
+  const favorites = await getFavorite();
   const session = await getServerSession(authOptions);
 
   return (
@@ -199,7 +201,7 @@ export default async function Header() {
               </svg>
             </Link>
             <UserMenuBtn session={session} />
-            <FavoriteBtn />
+            <FavoriteBtn favorites={favorites} />
             <ShopingCartBtn cart={cart} />
           </div>
         </div>
