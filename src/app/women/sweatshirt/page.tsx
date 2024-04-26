@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { prisma } from "@/lib/db/prisma";
 
 import Breadcrumbs from "@/components/Breadcrumbs";
-import CardListCategory from "@/components/CardListCategory";
+import CardListCategory from "@/components/CategoryList";
 
 export const metadata: Metadata = {
   title: "Sweatshirts page",
@@ -43,7 +43,7 @@ export default async function CategorySweatshirtsPage() {
           Sweatshirts
         </h1>
         <div className="text-lg md:content-end md:align-bottom">
-          {count._count || 0} Products
+          {count._count || "No"} Products
         </div>
       </div>
       <div className="mb-8 md:hidden">

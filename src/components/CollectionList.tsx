@@ -1,12 +1,12 @@
+import { Routes } from "@/constants";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 
 export default function CollectionList({ gender }: { gender: string }) {
   return (
     <div className="mb-10 grid grid-cols-2 gap-4 md:mb-12 md:grid-cols-4 md:gap-6">
       <Link
-        href={`/${gender}/shirt`}
+        href={`/${gender}${Routes.SHIRTS}`}
         className="object-covers relative block max-w-[312px] "
       >
         <Image
@@ -21,7 +21,7 @@ export default function CollectionList({ gender }: { gender: string }) {
         </span>
       </Link>
       <Link
-        href={`/${gender}/sweatshirt`}
+        href={`/${gender}${Routes.SWEATSHIRTS}`}
         className="relative block max-w-[312px] object-contain "
       >
         <Image
@@ -36,7 +36,7 @@ export default function CollectionList({ gender }: { gender: string }) {
         </span>
       </Link>
       <Link
-        href={`/${gender}/hoodie`}
+        href={`/${gender}${Routes.HOODIE}`}
         className="relative block max-w-[312px] object-contain "
       >
         <Image
@@ -51,7 +51,7 @@ export default function CollectionList({ gender }: { gender: string }) {
         </span>
       </Link>
       <Link
-        href={`/${gender}/jogger`}
+        href={`/${gender}${Routes.JOGGER}`}
         className="relative block max-w-[312px] object-contain "
       >
         <Image

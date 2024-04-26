@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import { prisma } from "@/lib/db/prisma";
 
 import CardList from "@/components/CardList";
-import Search from "@/components/Search";
+import Search from "@/components/Header/_components/Search";
 
 type SearchPageProps = {
   searchParams: { query: string };

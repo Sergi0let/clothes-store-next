@@ -1,8 +1,8 @@
 "use client";
 
+import clsx from "clsx";
 import { useState, useTransition } from "react";
 import { addToFavorite } from "@/app/actions";
-import clsx from "clsx";
 
 export default function AddToFavorite({ id }: { id: string }) {
   const [isPending, startTransition] = useTransition();

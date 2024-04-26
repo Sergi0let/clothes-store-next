@@ -1,9 +1,16 @@
-import Breadcrumbs from "@/components/Breadcrumbs";
-import CardListCategory from "@/components/CardListCategory";
-import CollectionList from "@/components/CollectionList";
+import type { Metadata } from "next";
 import { prisma } from "@/lib/db/prisma";
+import { Routes } from "@/constants";
 
-export default async function CategoryPage() {
+import Breadcrumbs from "@/components/Breadcrumbs";
+import CategoryList from "@/components/CategoryList";
+
+export const metadata: Metadata = {
+  title: "Shirts men page",
+  description: "About men shirts",
+};
+
+export default async function CategoryShirtsPage() {
   const [products, count] = await Promise.all([
     prisma.products.findMany({
       where: { gender: "men", category: "shirt" },
@@ -18,10 +25,10 @@ export default async function CategoryPage() {
     <main className="m-auto max-w-7xl px-4">
       <Breadcrumbs
         breadcrumbs={[
-          { label: "Home", href: "/" },
+          { label: "Home", href: Routes.HOME },
           {
             label: "Men",
-            href: "/men",
+            href: Routes.MEN,
           },
         ]}
       />
@@ -29,7 +36,7 @@ export default async function CategoryPage() {
       <div className="mb-6 gap-6 md:mb-12 md:flex">
         <h1 className="text-2xl font-medium uppercase md:text-4xl">Shirts</h1>
         <div className="text-lg md:content-end md:align-bottom">
-          {count._count || 0} Products
+          {count._count || "No"} Products
         </div>
       </div>
       <div className="mb-8 md:hidden">
@@ -66,7 +73,7 @@ export default async function CategoryPage() {
             <div className="skeleton h-4 w-full"></div>
           </div>
         </div>
-        <CardListCategory productsDisplay={products} />
+        <CategoryList productsDisplay={products} />
       </div>
     </main>
   );

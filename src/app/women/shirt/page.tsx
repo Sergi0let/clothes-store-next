@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { prisma } from "@/lib/db/prisma";
+import { Routes } from "@/constants";
 
 import Breadcrumbs from "@/components/Breadcrumbs";
-import CardListCategory from "@/components/CardListCategory";
+import CategoryList from "@/components/CategoryList";
 
 export const metadata: Metadata = {
   title: "Shirts page",
@@ -23,10 +24,10 @@ export default async function CategoryShirtPage() {
     <main className="m-auto max-w-7xl px-4">
       <Breadcrumbs
         breadcrumbs={[
-          { label: "Home", href: "/" },
+          { label: "Home", href: Routes.HOME },
           {
             label: "Women",
-            href: "/women",
+            href: Routes.WOMEN,
           },
         ]}
       />
@@ -34,7 +35,7 @@ export default async function CategoryShirtPage() {
       <div className="mb-6 gap-6 md:mb-12 md:flex">
         <h1 className="text-2xl font-medium uppercase md:text-4xl">Shirts</h1>
         <div className="text-lg md:content-end md:align-bottom">
-          {count._count || 0} Products
+          {count._count || "No"} Products
         </div>
       </div>
       <div className="mb-8 md:hidden">
@@ -71,7 +72,7 @@ export default async function CategoryShirtPage() {
             <div className="skeleton h-4 w-full"></div>
           </div>
         </div>
-        <CardListCategory productsDisplay={products} />
+        <CategoryList productsDisplay={products} />
       </div>
     </main>
   );

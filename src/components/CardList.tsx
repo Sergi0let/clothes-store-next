@@ -1,6 +1,6 @@
 import { Products } from "@prisma/client";
 import React from "react";
-import Card from "./Card";
+import Card from "./Card/Card";
 
 type CardListProps = {
   title: string;

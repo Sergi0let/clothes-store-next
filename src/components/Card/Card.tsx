@@ -1,9 +1,8 @@
 import Image from "next/image";
 import React from "react";
-import AddToFavorite from "./AddToFavorite";
+import AddToFavorite from "./_components/AddToFavorite";
 import { formatPrice } from "@/lib/format";
-import Link from "next/link";
-import CardLink from "./CardLink";
+import CardLink from "../CardLink";
 
 type CardProps = {
   name: string;

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
-import Header from "@/components/Header";
+import Header from "@/components/Header/Header";
 import Sidebar from "@/components/Sidebar";
 import Footer from "@/components/Footer";
 import SessionProvider from "./SessionProvider";

@@ -1,10 +1,15 @@
-import Breadcrumbs from "@/components/Breadcrumbs";
-import CardListCategory from "@/components/CardListCategory";
-import CollectionList from "@/components/CollectionList";
+import type { Metadata } from "next";
 import { prisma } from "@/lib/db/prisma";
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
+import { Routes } from "@/constants";
+
+import Breadcrumbs from "@/components/Breadcrumbs";
+import CategoryList from "@/components/CategoryList";
+import CollectionList from "@/components/CollectionList";
+
+export const metadata: Metadata = {
+  title: "Men page",
+  description: "About men clothes",
+};
 
 export default async function MenPage() {
   const [products, count] = await Promise.all([
@@ -21,10 +26,10 @@ export default async function MenPage() {
     <main className="m-auto max-w-7xl px-4">
       <Breadcrumbs
         breadcrumbs={[
-          { label: "Home", href: "/" },
+          { label: "Home", href: Routes.HOME },
           {
             label: "Men",
-            href: "/men",
+            href: Routes.MEN,
             active: true,
           },
         ]}
@@ -33,7 +38,7 @@ export default async function MenPage() {
       <div className="mb-6 gap-6  md:flex">
         <h1 className="text-2xl font-medium md:text-4xl">For men</h1>
         <div className="text-lg md:content-end md:align-bottom">
-          {count._count || 0} Products
+          {count._count || "No"} Products
         </div>
       </div>
       <div className="mb-8 md:hidden">
@@ -70,7 +75,7 @@ export default async function MenPage() {
             <div className="skeleton h-4 w-full"></div>
           </div>
         </div>
-        <CardListCategory productsDisplay={products} />
+        <CategoryList productsDisplay={products} />
       </div>
     </main>
   );

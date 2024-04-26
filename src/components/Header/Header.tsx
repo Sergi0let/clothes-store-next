@@ -1,13 +1,14 @@
 import { getServerSession } from "next-auth";
 import Link from "next/link";
 import { getCart } from "@/lib/db/cart";
-import MenuBtn from "./MenuBtn";
-import ShopingCartBtn from "./ShopingCartBtn";
-import FavoriteBtn from "./FavoriteBtn";
-import BannerTop from "./BannerTop";
-import UserMenuBtn from "./UserMenuBtn";
+import MenuBtn from "../MenuBtn";
+import ShopingCartBtn from "./_components/ShopingCartBtn";
+import FavoriteBtn from "./_components/FavoriteBtn";
+import BannerTop from "../BannerTop";
+import UserMenuBtn from "./_components/UserMenuBtn";
 import authOptions from "@/utils/authOptions";
 import { getFavorite } from "@/lib/db/favorite";
+import { Routes } from "@/constants";
 
 export default async function Header() {
   const cart = await getCart();
@@ -20,7 +21,7 @@ export default async function Header() {
       <div className="navbar bg-base-100 px-4  md:min-h-[104px]">
         <MenuBtn isOpened={false} className="pr-4 md:hidden" />
         <div className=" flex-1 ">
-          <Link href="/" className="md:mr-2 lg:mr-14">
+          <Link href={Routes.HOME} className="md:mr-2 lg:mr-14">
             <svg
               className="w-24 fill-primary transition-colors hover:fill-blue-800 md:w-auto"
               width="139"
@@ -50,7 +51,7 @@ export default async function Header() {
             >
               <li>
                 <Link
-                  href="/men/shirt"
+                  href={Routes.MEN + Routes.SHIRTS}
                   className="rounded-none hover:text-info"
                 >
                   Shirts
@@ -58,7 +59,7 @@ export default async function Header() {
               </li>
               <li>
                 <Link
-                  href="/men/sweatshirt"
+                  href={Routes.MEN + Routes.SWEATSHIRTS}
                   className="rounded-none hover:text-info"
                 >
                   Sweatshirts
@@ -66,7 +67,7 @@ export default async function Header() {
               </li>
               <li>
                 <Link
-                  href="/men/hoodie"
+                  href={Routes.MEN + Routes.HOODIE}
                   className="rounded-none hover:text-info"
                 >
                   Hoodies
@@ -74,7 +75,7 @@ export default async function Header() {
               </li>
               <li>
                 <Link
-                  href="/men/jogger"
+                  href={Routes.MEN + Routes.JOGGER}
                   className="rounded-none hover:text-info"
                 >
                   Joggers & Shorts
@@ -96,7 +97,7 @@ export default async function Header() {
             >
               <li>
                 <Link
-                  href="/women/shirt"
+                  href={Routes.WOMEN + Routes.SHIRTS}
                   className="rounded-none hover:text-info"
                 >
                   Shirts
@@ -104,7 +105,7 @@ export default async function Header() {
               </li>
               <li>
                 <Link
-                  href="/women/sweatshirt"
+                  href={Routes.WOMEN + Routes.SWEATSHIRTS}
                   className="rounded-none hover:text-info"
                 >
                   Sweatshirts
@@ -112,7 +113,7 @@ export default async function Header() {
               </li>
               <li>
                 <Link
-                  href="/women/hoodie"
+                  href={Routes.WOMEN + Routes.HOODIE}
                   className="rounded-none hover:text-info"
                 >
                   Hoodies
@@ -120,7 +121,7 @@ export default async function Header() {
               </li>
               <li>
                 <Link
-                  href="/women/jogger"
+                  href={Routes.WOMEN + Routes.JOGGER}
                   className="rounded-none hover:text-info"
                 >
                   Joggers & Shorts
@@ -183,7 +184,7 @@ export default async function Header() {
             </a>
           </div>
           <div className="flex gap-4 md:gap-6">
-            <Link href="/search">
+            <Link href={Routes.SEARCH}>
               <svg
                 className="ml-6 w-5 fill-primary transition-colors hover:fill-blue-800 md:w-7"
                 viewBox="0 0 28 28"
