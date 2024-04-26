@@ -1,7 +1,7 @@
 import { getServerSession } from "next-auth";
 import Link from "next/link";
 import { getCart } from "@/lib/db/cart";
-import MenuBtn from "../MenuBtn";
+import MenuBtn from "./_components/MenuBtn";
 import ShopingCartBtn from "./_components/ShopingCartBtn";
 import FavoriteBtn from "./_components/FavoriteBtn";
 import BannerTop from "../BannerTop";

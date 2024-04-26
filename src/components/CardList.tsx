@@ -27,6 +27,7 @@ export default function CardList({ title, productsDisplay }: CardListProps) {
               id={product.id}
               gender={product.gender}
               category={product.category}
+              reviews={product.reviews || 0}
             />
           ))}
       </div>

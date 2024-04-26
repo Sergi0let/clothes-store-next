@@ -71,3 +71,33 @@ export async function addToFavorite(productId: string) {
   }
   revalidatePath("/[gender]/[category]");
 }
+
+export async function addReviews(productId: string) {
+  try {
+    const product = await prisma.products.findUnique({
+      where: { id: productId },
+    });
+
+    console.log(product);
+
+    if (!product) {
+      throw new Error("Product not found");
+    }
+
+    const updatedReviews = product.reviews === null ? 0 : product.reviews;
+
+    await prisma.products.update({
+      where: { id: productId },
+      data: {
+        reviews: updatedReviews + 1,
+      },
+    });
+
+    console.log("Review added succeddfully");
+  } catch (error) {
+    console.log("Error adding review:", error);
+  } finally {
+    await prisma.$disconnect();
+  }
+  revalidatePath("/[gender]/[category]");
+}

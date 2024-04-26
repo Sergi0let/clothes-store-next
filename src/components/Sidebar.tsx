@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import MenuBtn from "./MenuBtn";
+import MenuBtn from "./Header/_components/MenuBtn";
 
 export default function Sidebar() {
   function closeSidebar() {

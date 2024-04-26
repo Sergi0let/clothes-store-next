@@ -26,9 +26,11 @@ export default function ShopingCartBtn({ cart }: ShopingCartBtnProps) {
           >
             <path d="M21 7A7 7 0 107 7H0v17.5A3.5 3.5 0 003.5 28h21a3.5 3.5 0 003.5-3.5V7h-7zm-7-4.667A4.666 4.666 0 0118.667 7H9.333A4.667 4.667 0 0114 2.333zM25.667 24.5a1.167 1.167 0 01-1.167 1.167h-21A1.167 1.167 0 012.333 24.5V9.333H7v2.334h2.333V9.333h9.334v2.334H21V9.333h4.667V24.5z" />
           </svg>
-          <span className="badge indicator-item badge-sm h-4 min-w-4 border-collapse  rounded-full bg-blue-800 text-base-100 md:h-6 md:min-w-6">
-            {cart?.size || 0}
-          </span>
+          {!!cart?.size && (
+            <span className="badge indicator-item badge-sm h-4 min-w-4 border-collapse  rounded-full bg-blue-800 text-base-100 md:h-6 md:min-w-6">
+              {cart?.size}
+            </span>
+          )}
         </div>
       </label>
       <div

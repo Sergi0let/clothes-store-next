@@ -1,4 +1,5 @@
 import { mergeAnonymousCartIntoUserCart } from "@/lib/db/cart";
+import { mergeAnonymousFavoriteIntoUser } from "@/lib/db/favorite";
 import { prisma } from "@/lib/db/prisma";
 import { env } from "@/lib/env";
 import { PrismaAdapter } from "@auth/prisma-adapter";
@@ -24,6 +25,7 @@ const authOptions: NextAuthOptions = {
   events: {
     async signIn({ user }) {
       await mergeAnonymousCartIntoUserCart(user.id);
+      await mergeAnonymousFavoriteIntoUser(user.id);
     },
   },
 };

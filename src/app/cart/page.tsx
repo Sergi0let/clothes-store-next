@@ -1,7 +1,10 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import { getCart } from "@/lib/db/cart";
+
+import { setProductQuantity } from "./actions";
 import CartEntry from "./_components/CartEntry";
-import { setProductQuantity } from "./acitons";
+import ProgressCart from "./_components/ProgressCart";
+import EmptyCart from "./_components/EmptyCart";
 
 export const metadata: Metadata = {
   title: "You Cart",
@@ -9,23 +12,20 @@ export const metadata: Metadata = {
 
 export default async function CartPage() {
   const cart = await getCart();
+
+  if (!cart?.subtotal) {
+    return <EmptyCart />;
+  }
   return (
     <main className="m-auto max-w-7xl px-4 pb-14 pt-6 md:pb-32 md:pt-12">
       <div className="mb-4 md:mb-8 md:flex md:gap-4">
         <h1 className="text-2xl md:text-5xl">Shopping Cart</h1>
         <span className="text-lg text-secondary md:content-end md:text-xl">
-          2 Products
+          {cart?.size} Products
         </span>
       </div>
       <div>
-        <progress
-          className="progress progress-success w-2/5"
-          value="10"
-          max="100"
-        ></progress>
-        <div className="mt-2 text-sm md:mt-4 md:text-lg">
-          You are eligible for free shipping!
-        </div>
+        <ProgressCart sum={cart?.subtotal} />
       </div>
       <div>
         <div className="mt-12 hidden flex-wrap items-start gap-6 text-sm sm:flex">

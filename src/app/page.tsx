@@ -3,6 +3,8 @@ import { prisma } from "@/lib/db/prisma";
 import CardList from "@/components/CardList";
 import Link from "next/link";
 import PaginationBar from "@/components/PaginationBar";
+import MenHero from "@/assets/hero/hero-men.png";
+import WomenHero from "@/assets/hero/hero-women.png";
 
 type HomeProps = {
   searchParams: { page: string };
@@ -22,17 +24,17 @@ export default async function Home({
     take: pageSize,
   });
 
+
   return (
     <main>
-      <div className="flex flex-col sm:flex-row md:min-h-[560px] lg:min-h-[700px]">
+      <div className="m-auto flex max-w-[1400px] flex-col sm:flex-row md:min-h-[560px] lg:min-h-[700px]">
         <section
           className="hero min-h-[360px] content-end md:pb-12"
           style={{
-            backgroundImage: "url(hero/hero-men.png)",
+            backgroundImage: `url(${MenHero.src})`,
             backgroundPositionY: "0",
           }}
         >
-          <div className="hero-overlay opacity-0"></div>
           <div className="hero-content text-center text-neutral-content">
             <div className="max-w-md">
               <h2 className="mb-5 text-2xl font-bold text-base-100 md:text-6xl">
@@ -49,11 +51,10 @@ export default async function Home({
         <section
           className="hero min-h-[360px] content-end md:pb-12"
           style={{
-            backgroundImage: "url(hero/hero-women.png)",
+            backgroundImage: `url(${WomenHero.src})`,
             backgroundPositionY: "0",
           }}
         >
-          <div className="hero-overlay opacity-0"></div>
           <div className="hero-content text-center text-neutral-content">
             <div className="max-w-md">
               <h2 className="mb-5 text-2xl font-bold text-base-100 md:text-6xl">
