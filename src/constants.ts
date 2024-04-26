@@ -7,4 +7,8 @@ export const Routes: { [name: string]: string } = {
   HOODIE: "/hoodie",
   JOGGER: "/jogger",
   SEARCH: "/search",
+  ACCOUNT: "/account",
+  ORDERS: "/orders",
+  FAVORITES: "/favorites",
+  ADDRESSES: "/addresses",
 };

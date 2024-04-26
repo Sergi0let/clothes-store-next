@@ -78,8 +78,6 @@ export async function addReviews(productId: string) {
       where: { id: productId },
     });
 
-    console.log(product);
-
     if (!product) {
       throw new Error("Product not found");
     }

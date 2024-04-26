@@ -20,8 +20,6 @@ async function addProduct(formData: FormData) {
   const isBestSeller = formData.get("isBestSeller") === "true";
   const amount = formData.get("amount")?.toString() || "0";
 
-  console.log(formData);
-
   if (!name || !gender || !category || !description || !price || !imageUrl) {
     throw Error("Missing required fields");
   }

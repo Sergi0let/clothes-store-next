@@ -189,7 +189,7 @@ export default function ProductCard({
               />
               Delivery & Returns
             </div>
-            <div className="collapse-content">
+            <div className="collapse-content text-xs text-secondary md:text-sm">
               <ul className="list-description">
                 <li>
                   Перш ніж прати трикотаж, перевірте ярлики з інструкціями

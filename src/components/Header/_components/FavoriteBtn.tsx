@@ -1,5 +1,6 @@
 "use client";
 
+import { Routes } from "@/constants";
 import { FavoriteCart } from "@/lib/db/favorite";
 import Link from "next/link";
 
@@ -50,7 +51,7 @@ export default function FavoriteBtn({ favorites }: FavoriteBtnProps) {
 
           <div className="card-actions">
             <Link
-              href="/favorite"
+              href={Routes.ACCOUNT + Routes.FAVORITES}
               className="block min-w-full max-w-full bg-blue-800 px-6 py-2 text-center text-lg text-base-100"
               onClick={closeDropdown}
             >

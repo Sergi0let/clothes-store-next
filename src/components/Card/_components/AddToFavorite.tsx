@@ -4,7 +4,13 @@ import clsx from "clsx";
 import { useState, useTransition } from "react";
 import { addToFavorite } from "@/app/actions";
 
-export default function AddToFavorite({ id }: { id: string }) {
+export default function AddToFavorite({
+  id,
+  userAccount,
+}: {
+  id: string;
+  userAccount: boolean;
+}) {
   const [isPending, startTransition] = useTransition();
   const [success, setSuccess] = useState(false);
 
@@ -25,6 +31,7 @@ export default function AddToFavorite({ id }: { id: string }) {
         <svg
           className={clsx(
             success ? "fill-red-500" : "",
+            userAccount ? "fill-accent" : "",
             "w-4 fill-primary hover:fill-red-500  md:w-6",
           )}
           viewBox="0 0 28 28"

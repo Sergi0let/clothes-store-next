@@ -15,6 +15,7 @@ type CardProps = {
   category: string;
   gender: string;
   reviews: number;
+  userAccount?: boolean;
 };
 
 export default function Card({
@@ -28,6 +29,7 @@ export default function Card({
   category,
   gender,
   reviews,
+  userAccount = false,
 }: CardProps) {
   return (
     <div className="max-w100% relative  md:max-w-[312px]">
@@ -49,7 +51,7 @@ export default function Card({
         )}
       </div>
       <div className="absolute right-0 top-0">
-        <AddToFavorite id={id} />
+        <AddToFavorite userAccount={userAccount} id={id} />
       </div>
       <figure>
         <Image
