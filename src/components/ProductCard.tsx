@@ -15,6 +15,7 @@ type ProductCardProps = {
   discountPrice: number;
   price: number;
   imageUrl: string;
+  media: string;
   id: string;
   amount: string;
   description: string;
@@ -30,6 +31,7 @@ export default function ProductCard({
   price,
   id,
   imageUrl,
+  media,
   description,
   amount,
 }: ProductCardProps) {
@@ -50,7 +52,7 @@ export default function ProductCard({
         </div>
         <Image
           className="w-full"
-          src={imageUrl}
+          src={imageUrl || media}
           width={400}
           height={500}
           alt={name}

@@ -12,6 +12,7 @@ const nextConfig = {
         hostname: "www.zara.com",
       },
       { hostname: "lh3.googleusercontent.com" },
+      { hostname: "firebasestorage.googleapis.com" },
     ],
   },
 };

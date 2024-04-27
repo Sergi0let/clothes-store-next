@@ -14,7 +14,7 @@ export default async function Home({
   searchParams: { page = "1" },
 }: HomeProps) {
   const currentPage = parseInt(page);
-  const pageSize = 6;
+  const pageSize = 8;
   const totalItemCount = await prisma.products.count();
   const totalPages = Math.ceil(totalItemCount / pageSize);
 
@@ -23,8 +23,6 @@ export default async function Home({
     skip: currentPage * pageSize,
     take: pageSize,
   });
-
-
   return (
     <main>
       <div className="m-auto flex max-w-[1400px] flex-col sm:flex-row md:min-h-[560px] lg:min-h-[700px]">

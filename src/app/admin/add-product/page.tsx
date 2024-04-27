@@ -1,6 +1,7 @@
 import { prisma } from "@/lib/db/prisma";
 import SubminBtn from "./_component/SubminBtn";
 import { revalidatePath } from "next/cache";
+import UploaderImage from "./_component/UploaderImage";
 
 export const metadata = {
   title: "Add product",
@@ -15,12 +16,13 @@ async function addProduct(formData: FormData) {
   const description = formData.get("description")?.toString();
   const price = Number(formData.get("price") || 0);
   const discountPrice = Number(formData.get("discountPrice") || 0);
-  const imageUrl = formData.get("imageUrl")?.toString();
+  const imageUrl = formData.get("imageUrl")?.toString() || "";
   const isNewProduct = formData.get("isNewProduct") === "true";
   const isBestSeller = formData.get("isBestSeller") === "true";
   const amount = formData.get("amount")?.toString() || "0";
+  const media = formData.get("media")?.toString();
 
-  if (!name || !gender || !category || !description || !price || !imageUrl) {
+  if (!name || !gender || !category || !description || !price) {
     throw Error("Missing required fields");
   }
 
@@ -37,6 +39,7 @@ async function addProduct(formData: FormData) {
       isBestSeller,
       isNewProduct,
       amount,
+      media,
     },
   });
 
@@ -213,7 +216,6 @@ export default function AddProductPage() {
             <span className="label-text-alt">imageUrl</span>
           </div>
           <input
-            required
             name="imageUrl"
             id="imageUrl"
             type="text"
@@ -221,6 +223,9 @@ export default function AddProductPage() {
             className="input input-bordered input-primary w-full"
           />
         </label>
+
+        <UploaderImage />
+
         <SubminBtn className="btn-block">Submit</SubminBtn>
       </form>
     </div>

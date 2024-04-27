@@ -23,6 +23,7 @@ model Products {
   amount                 String         @default("0")
   createdAt              DateTime       @default(now())
   updatedAt              DateTime       @updatedAt
+  media                  String?
   CartItem               CartItem[]
   FavoriteItem           FavoriteItem[]
 

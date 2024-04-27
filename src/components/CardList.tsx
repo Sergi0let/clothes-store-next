@@ -14,22 +14,22 @@ export default function CardList({ title, productsDisplay }: CardListProps) {
         {title}
       </h2>
       <div className="mb-3 grid grid-cols-2 gap-x-4 gap-y-12 md:mb-8 md:grid-cols-3 lg:grid-cols-4">
-        {productsDisplay &&
-          productsDisplay.map((product) => (
-            <Card
-              discountPrice={product.discountPrice}
-              imageUrl={product.imageUrl}
-              isBestSeller={product.isBestSeller}
-              isNewProduct={product.isNewProduct}
-              name={product.name}
-              price={product.price}
-              key={product.id}
-              id={product.id}
-              gender={product.gender}
-              category={product.category}
-              reviews={product.reviews || 0}
-            />
-          ))}
+        {productsDisplay.map((product) => (
+          <Card
+            discountPrice={product.discountPrice}
+            imageUrl={product.imageUrl}
+            isBestSeller={product.isBestSeller}
+            isNewProduct={product.isNewProduct}
+            name={product.name}
+            price={product.price}
+            key={product.id}
+            id={product.id}
+            gender={product.gender}
+            category={product.category}
+            reviews={product.reviews || 0}
+            media={product.media || ""}
+          />
+        ))}
       </div>
     </div>
   );

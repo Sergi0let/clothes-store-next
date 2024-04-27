@@ -45,6 +45,7 @@ export default async function JoggerPage({
         isNewProduct={product?.isNewProduct}
         name={product?.name}
         price={product?.price}
+        media={product?.media || ""}
       />
     </main>
   );

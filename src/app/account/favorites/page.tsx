@@ -65,6 +65,7 @@ export default async function FavoritesPage() {
               category={product.category}
               reviews={product.reviews || 0}
               userAccount={true}
+              media={product?.media || ""}
             />
           ))}
         </div>

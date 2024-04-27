@@ -25,6 +25,7 @@ export default function CardListCategory({
             gender={product.gender}
             category={product.category}
             reviews={product.reviews || 0}
+            media={product.media || ""}
           />
         ))}
     </div>

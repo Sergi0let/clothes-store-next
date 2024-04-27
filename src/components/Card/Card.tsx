@@ -16,6 +16,7 @@ type CardProps = {
   gender: string;
   reviews: number;
   userAccount?: boolean;
+  media: string;
 };
 
 export default function Card({
@@ -30,6 +31,7 @@ export default function Card({
   gender,
   reviews,
   userAccount = false,
+  media,
 }: CardProps) {
   return (
     <div className="max-w100% relative  md:max-w-[312px]">
@@ -53,13 +55,13 @@ export default function Card({
       <div className="absolute right-0 top-0">
         <AddToFavorite userAccount={userAccount} id={id} />
       </div>
-      <figure>
+      <figure className="max-h-[480px]">
         <Image
-          src={imageUrl || "/hero/product-placeholder.png"}
+          src={imageUrl || media || "/product-placeholder.png"}
           width={400}
           height={480}
           alt={name}
-          className="object-contain"
+          className="max-h-[480px] object-cover"
         />
       </figure>
       <div className="text-pretty">
