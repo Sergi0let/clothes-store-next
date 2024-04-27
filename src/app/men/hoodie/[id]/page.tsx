@@ -45,7 +45,6 @@ export default async function HoodiesPage({
         isNewProduct={product?.isNewProduct}
         name={product?.name}
         price={product?.price}
-        media={product?.media || ""}
       />
     </main>
   );

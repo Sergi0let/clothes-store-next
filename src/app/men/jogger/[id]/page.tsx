@@ -39,7 +39,6 @@ export default async function CategoryPage({
         isNewProduct={product?.isNewProduct}
         name={product?.name}
         price={product?.price}
-        media={product?.media || ""}
       />
     </div>
   );
