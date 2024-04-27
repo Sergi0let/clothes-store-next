@@ -45,7 +45,7 @@ export default async function SweatshirtsPage({
         isNewProduct={product?.isNewProduct}
         name={product?.name}
         price={product?.price}
-        imageUrlSecond={product?.imageUrl}
+        imageUrlSecond={product?.imageUrlSecond || ""}
       />
     </div>
   );
