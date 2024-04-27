@@ -19,7 +19,7 @@ export default async function Home({
   const totalPages = Math.ceil(totalItemCount / pageSize);
 
   const products = await prisma.products.findMany({
-    orderBy: { createdAt: "desc" },
+    orderBy: { reviews: "desc" },
     skip: currentPage * pageSize,
     take: pageSize,
   });

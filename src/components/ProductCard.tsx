@@ -9,16 +9,17 @@ import ImgDelivery from "../assets/deliveryicon.svg";
 import ImgSold from "../assets/sold.svg";
 import ImgHurry from "../assets/hurryup.svg";
 import ImgCheck from "../assets/checkMark.svg";
+import clsx from "clsx";
 
 type ProductCardProps = {
   name: string;
   discountPrice: number;
   price: number;
   imageUrl: string;
-  media: string;
   id: string;
   amount: string;
   description: string;
+  imageUrlSecond: string;
   isBestSeller?: boolean;
   isNewProduct?: boolean;
 };
@@ -31,34 +32,50 @@ export default function ProductCard({
   price,
   id,
   imageUrl,
-  media,
   description,
   amount,
+  imageUrlSecond,
 }: ProductCardProps) {
   return (
-    <div className="md:flex md:gap-14">
-      <div className="relative flex-1 md:flex-auto md:flex-shrink-0 ">
-        <div className="absolute left-0 top-0">
-          {isBestSeller && (
-            <span className="block w-fit bg-primary px-2 text-xs font-semibold text-base-100 md:inline-block md:py-2 md:text-sm">
-              BESTSELLER
-            </span>
-          )}
-          {isNewProduct && (
-            <span className="block w-fit bg-primary px-2 text-xs font-semibold text-base-100 md:inline-block md:py-2 md:text-sm">
-              NEW
-            </span>
-          )}
+    <div className="pb-16 md:flex md:gap-14">
+      <div
+        className={clsx(
+          !!imageUrlSecond ? "grid-cols-2" : "grid-cols-1",
+          "grid w-full gap-3 md:w-3/6",
+        )}
+      >
+        <div className="relative">
+          <div className="absolute left-0 top-0">
+            {isBestSeller && (
+              <span className="block w-fit bg-primary px-2 text-xs font-semibold text-base-100 md:inline-block md:py-2 md:text-sm">
+                BESTSELLER
+              </span>
+            )}
+            {isNewProduct && (
+              <span className="block w-fit bg-primary px-2 text-xs font-semibold text-base-100 md:inline-block md:py-2 md:text-sm">
+                NEW
+              </span>
+            )}
+          </div>
+          <Image
+            className="w-full"
+            src={imageUrl}
+            width={400}
+            height={500}
+            alt={name}
+          />
         </div>
-        <Image
-          className="w-full"
-          src={imageUrl || media}
-          width={400}
-          height={500}
-          alt={name}
-        />
+        {imageUrlSecond && (
+          <Image
+            className="w-full"
+            src={imageUrlSecond}
+            width={400}
+            height={500}
+            alt={name}
+          />
+        )}
       </div>
-      <div className="">
+      <div className="w-full md:w-3/6">
         <h1 className="pt-4 text-2xl md:pt-0 md:text-4xl">{name}</h1>
         <div className="mb-2 flex items-end gap-2 md:mb-6 md:mt-4">
           <div className="rating max-w-16 md:max-w-24">

@@ -31,7 +31,7 @@ export default async function HoodiesPage({
           },
           {
             label: "Hoodies",
-            href: "/women/hoodies",
+            href: "/women/hoodie",
           },
         ]}
       />
@@ -45,7 +45,7 @@ export default async function HoodiesPage({
         isNewProduct={product?.isNewProduct}
         name={product?.name}
         price={product?.price}
-        media={product?.media || ""}
+        imageUrlSecond={product?.imageUrlSecond || ""}
       />
     </main>
   );

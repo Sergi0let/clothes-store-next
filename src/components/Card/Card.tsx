@@ -3,6 +3,7 @@ import React from "react";
 import AddToFavorite from "./_components/AddToFavorite";
 import { formatPrice } from "@/lib/format";
 import CardLink from "./_components/CardLink";
+import PlaceholderImg from "@/assets/product-placeholder.png";
 
 type CardProps = {
   name: string;
@@ -16,7 +17,6 @@ type CardProps = {
   gender: string;
   reviews: number;
   userAccount?: boolean;
-  media: string;
 };
 
 export default function Card({
@@ -31,10 +31,9 @@ export default function Card({
   gender,
   reviews,
   userAccount = false,
-  media,
 }: CardProps) {
   return (
-    <div className="max-w100% relative  md:max-w-[312px]">
+    <div className="max-w100% relative flex h-auto flex-col  md:max-w-[312px]">
       <div className="absolute left-0 top-0">
         {isBestSeller && (
           <span className="block w-fit bg-primary px-2 text-xs font-semibold text-base-100 md:inline-block md:py-2 md:text-sm">
@@ -55,13 +54,13 @@ export default function Card({
       <div className="absolute right-0 top-0">
         <AddToFavorite userAccount={userAccount} id={id} />
       </div>
-      <figure className="max-h-[480px]">
+      <figure className="flex-1">
         <Image
-          src={imageUrl || media || "/product-placeholder.png"}
+          src={imageUrl || PlaceholderImg}
           width={400}
           height={480}
           alt={name}
-          className="max-h-[480px] object-cover"
+          className="aspect-auto h-full object-fill object-top"
         />
       </figure>
       <div className="text-pretty">
