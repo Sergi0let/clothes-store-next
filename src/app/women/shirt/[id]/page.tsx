@@ -45,6 +45,7 @@ export default async function ShirtPage({
         isNewProduct={product?.isNewProduct}
         name={product?.name}
         price={product?.price}
+        imageUrlSecond={product?.imageUrl}
       />
     </main>
   );
