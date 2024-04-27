@@ -16,6 +16,7 @@ model Products {
   price                  Int
   discountPrice          Int
   imageUrl               String
+  imageUrlSecond         String?
   isAvailableForPurchase Boolean
   isBestSeller           Boolean
   isNewProduct           Boolean

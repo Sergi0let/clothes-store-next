@@ -17,12 +17,12 @@ async function addProduct(formData: FormData) {
   const price = Number(formData.get("price") || 0);
   const discountPrice = Number(formData.get("discountPrice") || 0);
   const imageUrl = formData.get("imageUrl")?.toString() || "";
+  const imageUrlSecond = formData.get("imageUrlSecond")?.toString() || "";
   const isNewProduct = formData.get("isNewProduct") === "true";
   const isBestSeller = formData.get("isBestSeller") === "true";
   const amount = formData.get("amount")?.toString() || "0";
-  const media = formData.get("media")?.toString();
 
-  if (!name || !gender || !category || !description || !price) {
+  if (!name || !gender || !category || !description || !price || !imageUrl) {
     throw Error("Missing required fields");
   }
 
@@ -35,11 +35,11 @@ async function addProduct(formData: FormData) {
       price,
       discountPrice,
       imageUrl,
+      imageUrlSecond,
       isAvailableForPurchase: true,
       isBestSeller,
       isNewProduct,
       amount,
-      media,
     },
   });
 
@@ -210,7 +210,7 @@ export default function AddProductPage() {
           </label>
         </div>
 
-        <label className="primay-color form-control w-full">
+        {/* <label className="primay-color form-control w-full">
           <div className="label">
             <span className="label-text">Product Image</span>
             <span className="label-text-alt">imageUrl</span>
@@ -222,11 +222,9 @@ export default function AddProductPage() {
             placeholder="Image URL"
             className="input input-bordered input-primary w-full"
           />
-        </label>
+        </label> */}
 
         <UploaderImage />
-
-        <SubminBtn className="btn-block">Submit</SubminBtn>
       </form>
     </div>
   );
