@@ -2,7 +2,6 @@ import Image from "next/image";
 
 import { formatPrice } from "@/lib/format";
 import AddToCartBtn from "./Buttons/AddToCartBtn";
-import { incrementProductQuantity } from "@/app/actions";
 import ImgDoc from "../assets/document.svg";
 import ImgWash from "../assets/washicon.svg";
 import ImgDelivery from "../assets/deliveryicon.svg";
@@ -10,6 +9,7 @@ import ImgSold from "../assets/sold.svg";
 import ImgHurry from "../assets/hurryup.svg";
 import ImgCheck from "../assets/checkMark.svg";
 import clsx from "clsx";
+import { incrementProductQuantity } from "@/app/(customerFacing)/actions";
 
 type ProductCardProps = {
   name: string;

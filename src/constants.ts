@@ -11,6 +11,9 @@ type RoutesType = {
   ORDERS: string;
   FAVORITES: string;
   ADDRESSES: string;
+  ADMIN: string;
+  ADDPRODACT: string;
+  LISTPRODACT: string;
 };
 
 export const Routes: RoutesType = {
@@ -26,4 +29,7 @@ export const Routes: RoutesType = {
   ORDERS: "/orders",
   FAVORITES: "/favorites",
   ADDRESSES: "/addresses",
+  ADMIN: "/admin",
+  ADDPRODACT: "/add-product",
+  LISTPRODACT: "/list-products",
 };

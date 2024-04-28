@@ -1,6 +1,7 @@
 "use client";
 
-import { addReviews } from '@/app/actions';
+import { addReviews } from "@/app/(customerFacing)/actions";
+// import { addReviews } from '@/app/actions';
 import Link from "next/link";
 import { useTransition } from "react";
 

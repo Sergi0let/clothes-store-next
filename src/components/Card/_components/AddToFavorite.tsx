@@ -1,8 +1,8 @@
 "use client";
 
+import { addToFavorite } from "@/app/(customerFacing)/actions";
 import clsx from "clsx";
 import { useState, useTransition } from "react";
-import { addToFavorite } from "@/app/actions";
 
 export default function AddToFavorite({
   id,
