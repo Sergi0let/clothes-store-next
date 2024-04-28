@@ -1,13 +1,19 @@
 import React, { Suspense } from "react";
 import Card from "../Card/Card";
 import ProductCardSkeleton from "../Skeletons/ProductCardSkeleton";
+import { Products } from "@prisma/client";
 
 type CardListProps = {
   title: string;
-  productFetcher: () => Promise<any>;
+  products?: Products[];
+  productFetcher?: () => Promise<any>;
 };
 
-export default function CardList({ title, productFetcher }: CardListProps) {
+export default function CardList({
+  title,
+  productFetcher,
+  products,
+}: CardListProps) {
   return (
     <div className="m-auto max-w-7xl px-3">
       <h2 className="mb-9 mt-14 text-2xl md:mb-14 md:mt-28 md:text-4xl">
@@ -24,7 +30,24 @@ export default function CardList({ title, productFetcher }: CardListProps) {
             </>
           }
         >
-          <ProductsSuspence productFetcher={productFetcher} />
+          {products?.map((product) => (
+            <Card
+              discountPrice={product.discountPrice}
+              imageUrl={product.imageUrl}
+              isBestSeller={product.isBestSeller}
+              isNewProduct={product.isNewProduct}
+              name={product.name}
+              price={product.price}
+              key={product.id}
+              id={product.id}
+              gender={product.gender}
+              category={product.category}
+              reviews={product.reviews || 0}
+            />
+          ))}
+          {productFetcher && (
+            <ProductsSuspence productFetcher={productFetcher} />
+          )}
         </Suspense>
       </div>
     </div>

@@ -20,25 +20,19 @@ export default async function Home({
   const totalItemCount = await prisma.products.count();
   const totalPages = Math.ceil(totalItemCount / pageSize);
 
-  const getAllProducts = cache(
-    () => {
-      return prisma.products.findMany({
-        orderBy: { reviews: "desc" },
-        skip: (currentPage - 1) * pageSize,
-        take: pageSize,
-      });
-    },
-    ["/", "getMostPopularProducts"],
-    {
-      revalidate: 60 * 60 * 24,
-    },
-  );
+  // const getAllProducts = cache(() => {
+  //   return prisma.products.findMany({
+  //     orderBy: { reviews: "desc" },
+  //     skip: (currentPage - 1) * pageSize,
+  //     take: pageSize,
+  //   });
+  // }, ["/", "getAllProducts"]);
 
-  // const products = await prisma.products.findMany({
-  //   orderBy: { reviews: "desc" },
-  //   skip: (currentPage - 1) * pageSize,
-  //   take: pageSize,
-  // });
+  const products = await prisma.products.findMany({
+    orderBy: { reviews: "desc" },
+    skip: (currentPage - 1) * pageSize,
+    take: pageSize,
+  });
   return (
     <main>
       <div className="m-auto flex max-w-[1400px] flex-col sm:flex-row md:min-h-[560px] lg:min-h-[700px]">
@@ -91,7 +85,7 @@ export default async function Home({
           </div>
         </section>
       </div>
-      <CardList title="All products" productFetcher={getAllProducts} />
+      <CardList title="All products" products={products} />
       {totalPages > 1 && (
         <div className="pb-9 pt-4 text-center md:pb-12">
           <PaginationBar currentPage={currentPage} totalPages={totalPages} />
