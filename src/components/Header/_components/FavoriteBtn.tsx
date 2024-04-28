@@ -42,11 +42,11 @@ export default function FavoriteBtn({ favorites }: FavoriteBtnProps) {
       </label>
       <div
         tabIndex={0}
-        className="card dropdown-content card-compact z-30 mt-3 w-52 rounded-none bg-base-100 shadow-md"
+        className="card dropdown-content card-compact z-30 mt-3 w-60 rounded-none bg-base-100 shadow-md"
       >
         <div className="card-body">
           <span className="text-lg font-bold">
-            {favorites?.size || 0} Items
+            {favorites?.size ? `${favorites?.size} Items` : "No favorite"}
           </span>
 
           <div className="card-actions">

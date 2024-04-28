@@ -97,7 +97,7 @@ export default function Card({
             {reviews} reviews
           </div>
         </div>
-        <div className="mt-2">
+        <div className="mt-2 overflow-hidden text-ellipsis">
           {discountPrice ? (
             <>
               <span className="text-[18px] font-semibold text-primary md:text-xl">

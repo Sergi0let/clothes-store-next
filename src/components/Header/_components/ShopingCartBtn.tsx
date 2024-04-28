@@ -3,6 +3,7 @@
 import Link from "next/link";
 
 import { ShoppingCart } from "@/lib/db/cart";
+import { formatPrice } from "@/lib/format";
 
 type ShopingCartBtnProps = {
   cart: ShoppingCart | null;
@@ -38,9 +39,11 @@ export default function ShopingCartBtn({ cart }: ShopingCartBtnProps) {
         className="card dropdown-content card-compact z-30 mt-3 w-52 rounded-none bg-base-100 shadow-md"
       >
         <div className="card-body">
-          <span className="text-lg font-bold">{cart?.size || 0} Items</span>
+          <span className="text-lg font-bold">
+            {cart?.size ? `${cart?.size} Items` : "No items in cart"}
+          </span>
           <span className="text-info">
-            Subtotal: {Number(cart?.subtotal || 0) / 100}₴
+            Subtotal: {formatPrice(cart?.subtotal || 0)}₴
           </span>
           <div className="card-actions">
             <Link

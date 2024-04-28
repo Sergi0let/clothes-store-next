@@ -48,13 +48,15 @@ export default function UserMenuBtn({ session }: UserMenuBtnProps) {
         <li className="rounded-none">
           {user ? (
             <button
-              className="rounded-none"
+              className="rounded-none "
               onClick={() => signOut({ callbackUrl: "/" })}
             >
               Sign Out
             </button>
           ) : (
-            <button onClick={() => signIn()}>Sign In</button>
+            <button className="rounded-none" onClick={() => signIn()}>
+              Sign In
+            </button>
           )}
         </li>
       </ul>

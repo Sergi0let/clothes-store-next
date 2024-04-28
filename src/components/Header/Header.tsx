@@ -37,7 +37,7 @@ export default async function Header() {
               />
             </svg>
           </Link>
-          <div className="dropdown hidden md:block">
+          <div className="dropdown dropdown-hover hidden md:block">
             <div
               tabIndex={0}
               role="button"
@@ -83,7 +83,7 @@ export default async function Header() {
               </li>
             </ul>
           </div>
-          <div className="dropdown hidden md:block">
+          <div className="dropdown dropdown-hover hidden md:block">
             <div
               tabIndex={0}
               role="button"
@@ -137,6 +137,7 @@ export default async function Header() {
               className="flex items-center gap-2 transition-colors hover:text-blue-800"
             >
               <svg
+                style={{ fill: "currentcolor" }}
                 width="16"
                 height="16"
                 viewBox="0 0 16 16"

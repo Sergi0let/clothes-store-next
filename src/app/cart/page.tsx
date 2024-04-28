@@ -5,6 +5,7 @@ import { setProductQuantity } from "./actions";
 import CartEntry from "./_components/CartEntry";
 import ProgressCart from "./_components/ProgressCart";
 import EmptyCart from "./_components/EmptyCart";
+import { formatPrice } from "@/lib/format";
 
 export const metadata: Metadata = {
   title: "You Cart",
@@ -47,7 +48,9 @@ export default async function CartPage() {
             <div className="text-xl">
               Subtotal:{" "}
               <span className="text-2xl font-bold">
-                {cart?.subtotal && cart.subtotal > 0 ? cart?.subtotal / 100 : 0}
+                {cart?.subtotal &&
+                  cart.subtotal > 0 &&
+                  formatPrice(cart.subtotal)}
                 ₴
               </span>
             </div>

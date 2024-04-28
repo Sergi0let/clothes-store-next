@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { FavoriteItemWithProducts } from "@/lib/db/favorite";
 import { incrementProductQuantity } from "@/app/actions";
-import AddToCartBtn from "@/components/AddToCartBtn";
+import AddToCartBtn from "@/components/Buttons/AddToCartBtn";
 
 type FavoriteEntryProps = {
   favorite: FavoriteItemWithProducts;

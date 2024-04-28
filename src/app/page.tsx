@@ -20,7 +20,7 @@ export default async function Home({
 
   const products = await prisma.products.findMany({
     orderBy: { reviews: "desc" },
-    skip: currentPage * pageSize,
+    skip: (currentPage - 1) * pageSize,
     take: pageSize,
   });
   return (

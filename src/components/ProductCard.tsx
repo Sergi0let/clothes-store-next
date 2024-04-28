@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 import { formatPrice } from "@/lib/format";
-import AddToCartBtn from "./AddToCartBtn";
+import AddToCartBtn from "./Buttons/AddToCartBtn";
 import { incrementProductQuantity } from "@/app/actions";
 import ImgDoc from "../assets/document.svg";
 import ImgWash from "../assets/washicon.svg";

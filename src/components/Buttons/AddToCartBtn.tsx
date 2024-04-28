@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import IconBag from "../assets/bag.svg";
+import IconBag from "@/assets/bag.svg";
 import Image from "next/image";
 import clsx from "clsx";
 
