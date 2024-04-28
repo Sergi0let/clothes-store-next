@@ -1,4 +1,19 @@
-export const Routes: { [name: string]: string } = {
+type RoutesType = {
+  HOME: string;
+  MEN: string;
+  WOMEN: string;
+  SHIRTS: string;
+  SWEATSHIRTS: string;
+  HOODIE: string;
+  JOGGER: string;
+  SEARCH: string;
+  ACCOUNT: string;
+  ORDERS: string;
+  FAVORITES: string;
+  ADDRESSES: string;
+};
+
+export const Routes: RoutesType = {
   HOME: "/",
   MEN: "/men",
   WOMEN: "/women",

@@ -21,7 +21,11 @@ export default async function Header() {
       <div className="navbar bg-base-100 px-4  md:min-h-[104px]">
         <MenuBtn isOpened={false} className="pr-4 md:hidden" />
         <div className=" flex-1 ">
-          <Link href={Routes.HOME} className="md:mr-2 lg:mr-14">
+          <Link
+            href={Routes.HOME}
+            aria-label="link to home page"
+            className="md:mr-2 lg:mr-14"
+          >
             <svg
               className="w-24 fill-primary transition-colors hover:fill-blue-800 md:w-auto"
               width="139"
@@ -185,7 +189,7 @@ export default async function Header() {
             </a>
           </div>
           <div className="flex gap-4 md:gap-6">
-            <Link href={Routes.SEARCH}>
+            <Link href={Routes.SEARCH} aria-label="link to search page">
               <svg
                 className="ml-6 w-5 fill-primary transition-colors hover:fill-blue-800 md:w-7"
                 viewBox="0 0 28 28"

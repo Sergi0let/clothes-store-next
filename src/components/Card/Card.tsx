@@ -66,33 +66,41 @@ export default function Card({
       <div className="text-pretty">
         <CardLink id={id} name={name} category={category} gender={gender} />
         <div className="mt-2 flex gap-2">
-          <div className="rating max-w-16 md:max-w-24">
+          <label
+            htmlFor="ratingProduct"
+            className="rating max-w-16 md:max-w-24"
+          >
             <input
+              id="ratingProduct"
               type="radio"
               name="rating-2"
               className="mask mask-star-2 bg-orange-400"
             />
             <input
+              id="ratingProduct"
               type="radio"
               name="rating-2"
               className="mask mask-star-2 bg-orange-400"
             />
             <input
+              id="ratingProduct"
               type="radio"
               name="rating-2"
               className="mask mask-star-2 bg-orange-400"
             />
             <input
+              id="ratingProduct"
               type="radio"
               name="rating-2"
               className="mask mask-star-2 bg-orange-400"
             />
             <input
+              id="ratingProduct"
               type="radio"
               name="rating-2"
               className="mask mask-star-2 bg-orange-400"
             />
-          </div>
+          </label>
           <div className="align-middle text-xs leading-6 text-secondary md:text-[14px]">
             {reviews} reviews
           </div>

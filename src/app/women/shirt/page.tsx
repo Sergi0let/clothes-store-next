@@ -3,7 +3,7 @@ import { prisma } from "@/lib/db/prisma";
 import { Routes } from "@/constants";
 
 import Breadcrumbs from "@/components/Breadcrumbs";
-import CategoryList from "@/components/CategoryList";
+import CategoryList from "@/components/Lists/CategoryList";
 
 export const metadata: Metadata = {
   title: "Shirts page",

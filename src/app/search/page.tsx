@@ -1,8 +1,9 @@
 import { Metadata } from "next";
 import { prisma } from "@/lib/db/prisma";
 
-import CardList from "@/components/CardList";
+import CardList from "@/components/Lists/CardList";
 import Search from "@/components/Header/_components/Search";
+import SearchList from "./_components/SearchList";
 
 type SearchPageProps = {
   searchParams: { query: string };
@@ -38,7 +39,7 @@ export default async function SearchPage({
             {"Sorry, we couldn't find any results:"} {query}
           </div>
         ) : (
-          <CardList title={`Search: ${query}`} productsDisplay={products} />
+          <SearchList title={`Search: ${query}`} searchProducts={products} />
         )}
       </div>
     </div>

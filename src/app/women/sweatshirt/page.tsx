@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { prisma } from "@/lib/db/prisma";
 
 import Breadcrumbs from "@/components/Breadcrumbs";
-import CardListCategory from "@/components/CategoryList";
+import CardListCategory from "@/components/Lists/CategoryList";
 
 export const metadata: Metadata = {
   title: "Sweatshirts page",

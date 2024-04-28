@@ -1,10 +1,12 @@
 import { prisma } from "@/lib/db/prisma";
 
-import CardList from "@/components/CardList";
+import CardList from "@/components/Lists/CardList";
 import Link from "next/link";
 import PaginationBar from "@/components/PaginationBar";
 import MenHero from "@/assets/hero/hero-men.png";
 import WomenHero from "@/assets/hero/hero-women.png";
+import { cache } from "@/lib/cashe";
+import Image from "next/image";
 
 type HomeProps = {
   searchParams: { page: string };
@@ -18,22 +20,37 @@ export default async function Home({
   const totalItemCount = await prisma.products.count();
   const totalPages = Math.ceil(totalItemCount / pageSize);
 
-  const products = await prisma.products.findMany({
-    orderBy: { reviews: "desc" },
-    skip: (currentPage - 1) * pageSize,
-    take: pageSize,
-  });
+  const getAllProducts = cache(
+    () => {
+      return prisma.products.findMany({
+        orderBy: { reviews: "desc" },
+        skip: (currentPage - 1) * pageSize,
+        take: pageSize,
+      });
+    },
+    ["/", "getMostPopularProducts"],
+    {
+      revalidate: 60 * 60 * 24,
+    },
+  );
+
+  // const products = await prisma.products.findMany({
+  //   orderBy: { reviews: "desc" },
+  //   skip: (currentPage - 1) * pageSize,
+  //   take: pageSize,
+  // });
   return (
     <main>
       <div className="m-auto flex max-w-[1400px] flex-col sm:flex-row md:min-h-[560px] lg:min-h-[700px]">
-        <section
-          className="hero min-h-[360px] content-end md:pb-12"
-          style={{
-            backgroundImage: `url(${MenHero.src})`,
-            backgroundPositionY: "0",
-          }}
-        >
-          <div className="hero-content text-center text-neutral-content">
+        <section className="hero relative flex min-h-[360px] items-end justify-center md:pb-12">
+          <Image
+            src={MenHero.src}
+            priority
+            fill
+            alt="men"
+            className="absolute right-0 top-0 aspect-auto object-cover"
+          />
+          <div className="hero-content content-end text-neutral-content">
             <div className="max-w-md">
               <h2 className="mb-5 text-2xl font-bold text-base-100 md:text-6xl">
                 MEN
@@ -47,13 +64,20 @@ export default async function Home({
           </div>
         </section>
         <section
-          className="hero min-h-[360px] content-end md:pb-12"
+          className="hero relative flex min-h-[360px] items-end justify-center md:pb-12"
           style={{
             backgroundImage: `url(${WomenHero.src})`,
             backgroundPositionY: "0",
           }}
         >
-          <div className="hero-content text-center text-neutral-content">
+          <Image
+            src={WomenHero.src}
+            priority
+            fill
+            alt="men"
+            className="absolute right-0 top-0 aspect-auto object-cover"
+          />
+          <div className="hero-content content-end text-neutral-content">
             <div className="max-w-md">
               <h2 className="mb-5 text-2xl font-bold text-base-100 md:text-6xl">
                 WOMEN
@@ -67,7 +91,7 @@ export default async function Home({
           </div>
         </section>
       </div>
-      <CardList title="All products" productsDisplay={products} />
+      <CardList title="All products" productFetcher={getAllProducts} />
       {totalPages > 1 && (
         <div className="pb-9 pt-4 text-center md:pb-12">
           <PaginationBar currentPage={currentPage} totalPages={totalPages} />

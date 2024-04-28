@@ -5,9 +5,9 @@ export default function Footer() {
     <footer className="bg-base-200">
       <div className="footer m-auto max-w-7xl p-10 text-base-content">
         <nav className="space-y-2">
-          <h6 className="pb-5 text-xl font-semibold uppercase text-primary">
+          <p className="pb-5 text-xl font-semibold uppercase text-primary">
             KONTAKT
-          </h6>
+          </p>
           <p>
             Unser support ist Mo-Fr von <br /> 9:00-17:00 Uhr erreichbar!
           </p>
@@ -19,26 +19,26 @@ export default function Footer() {
           </a>
         </nav>
         <nav className="space-y-2">
-          <h6 className="pb-5 text-xl font-semibold uppercase text-primary">
+          <p className="pb-5 text-xl font-semibold uppercase text-primary">
             HELP & INFORMATION
-          </h6>
+          </p>
           <a className="link-hover link">About us</a>
           <a className="link-hover link">Contact</a>
           <a className="link-hover link">Delivery time and cost</a>
         </nav>
         <nav className="space-y-2">
-          <h6 className="pb-5 text-xl font-semibold uppercase text-primary">
+          <p className="pb-5 text-xl font-semibold uppercase text-primary">
             CATEGORIES
-          </h6>
+          </p>
           <a className="link-hover link">Shirts</a>
           <a className="link-hover link">Sweatshirts</a>
           <a className="link-hover link">Hoodies</a>
           <a className="link-hover link">Joggers & Shorts</a>
         </nav>
         <nav className="space-y-2">
-          <h6 className="pb-5 text-xl font-semibold uppercase text-primary">
+          <p className="pb-5 text-xl font-semibold uppercase text-primary">
             TERMS AND CONDITIONS
-          </h6>
+          </p>
           <a className="link-hover link">Privacy policy</a>
           <a className="link-hover link">Return policy</a>
           <a className="link-hover link">General terms and conditions</a>

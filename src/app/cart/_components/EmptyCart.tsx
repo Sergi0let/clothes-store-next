@@ -1,6 +1,5 @@
-import { Routes } from "@/constants";
-import Link from "next/link";
-import React from "react";
+import StartShoppingBtn from "@/components/Buttons/StartShoppingBtn";
+import RecentlyViewProducts from "@/components/Lists/RecentlyViewProducts";
 
 export default function EmptyCart() {
   return (
@@ -41,12 +40,8 @@ export default function EmptyCart() {
         <p className="text-md pt-5 text-secondary md:pt-8 md:text-lg">
           It&apos;s not too late to fix it :)
         </p>
-        <Link
-          href={Routes.HOME}
-          className="ml-auto mr-auto mt-5 flex h-14 w-56 items-center justify-center bg-blue-700 text-lg font-medium uppercase text-base-100 transition-colors hover:bg-blue-800 active:bg-blue-950 md:mt-8 md:h-16 md:w-64"
-        >
-          Start Shopping
-        </Link>
+        <StartShoppingBtn className="ml-auto mr-auto mt-5" />
+        <RecentlyViewProducts />
       </div>
     </main>
   );

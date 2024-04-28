@@ -3,7 +3,6 @@
 import clsx from "clsx";
 import { useState, useTransition } from "react";
 import { addToFavorite } from "@/app/actions";
-import { usePathname } from "next/navigation";
 
 export default function AddToFavorite({
   id,
@@ -14,10 +13,9 @@ export default function AddToFavorite({
 }) {
   const [isPending, startTransition] = useTransition();
   const [success, setSuccess] = useState(false);
-  const path = usePathname();
-  console.log("path", path);
   return (
     <button
+      aria-label="added product to favorite"
       onClick={() => {
         setSuccess(false);
         startTransition(async () => {

@@ -36,7 +36,7 @@ export default function BannerTop() {
             I want the code
           </button>
         </p>
-        <button onClick={handleRemoveBanner}>
+        <button aria-label="close banner" onClick={handleRemoveBanner}>
           <svg
             className="w-2 md:w-4"
             width="16"
