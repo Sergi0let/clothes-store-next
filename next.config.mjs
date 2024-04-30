@@ -15,6 +15,7 @@ const nextConfig = {
       { hostname: "firebasestorage.googleapis.com" },
     ],
   },
+  transpilePackages: ["lucide-react"],
 };
 
 export default nextConfig;

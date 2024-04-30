@@ -1,7 +1,9 @@
 import { prisma } from "@/lib/db/prisma";
 import { formatPrice } from "@/lib/format";
 import Image from "next/image";
-import React from "react";
+import { CircleCheckBig, CirclePercent } from "lucide-react";
+import { CircleX } from "lucide-react";
+import Link from "next/link";
 
 export default async function ProductList() {
   const allProducts = await prisma.products.findMany({
@@ -13,18 +15,12 @@ export default async function ProductList() {
         {/* head */}
         <thead>
           <tr>
+            <th>+/-</th>
+            <th>Product info</th>
+            <th>Price/Discount</th>
             <th>
-              <label>
-                <input type="checkbox" className="checkbox" />
-              </label>
+              <CirclePercent />
             </th>
-            <th>Name Product</th>
-            <th>Category</th>
-            <th>Price</th>
-            <th>Discount Price</th>
-            <th>Sales percent</th>
-
-            <th>Gender (info)</th>
             <th>Amount</th>
             <th>Settings</th>
           </tr>
@@ -33,9 +29,11 @@ export default async function ProductList() {
           {allProducts.map((product) => (
             <tr key={product.id}>
               <th>
-                <label>
-                  <input type="checkbox" className="checkbox" />
-                </label>
+                {product.isAvailableForPurchase ? (
+                  <CircleCheckBig color="#24BF33" />
+                ) : (
+                  <CircleX color="#BB1D1D" />
+                )}
               </th>
               <td>
                 <div className="flex items-center gap-3">
@@ -49,16 +47,35 @@ export default async function ProductList() {
                       />
                     </div>
                   </div>
-                  <div>
-                    <div className="font-bold">{product.name}</div>
+                  <div className="space-y-2">
+                    <div className="font-medium">{product.name}</div>
+                    <div className="font-bold uppercase">{product.gender}</div>
+                    <div>{product.category}</div>
+                    <div className="">
+                      {product.isBestSeller && (
+                        <span className="badge badge-primary badge-sm text-base-100 md:badge-lg">
+                          Bestseller
+                        </span>
+                      )}
+                      {product.isNewProduct && (
+                        <span className="badge badge-accent badge-sm text-base-100 md:badge-lg">
+                          New product
+                        </span>
+                      )}
+                    </div>
                   </div>
                 </div>
               </td>
-              <td>
-                <div className="text-sm opacity-50">{product.category}</div>
+
+              <td className="whitespace-nowrap">
+                <div>
+                  <b>Price:</b> {formatPrice(product.price)}
+                </div>
+                <div>
+                  <em>Discount:</em> {formatPrice(product.discountPrice)}
+                </div>
               </td>
-              <td>{formatPrice(product.price)}</td>
-              <td>{formatPrice(product.discountPrice)}</td>
+
               <td>
                 {product.discountPrice &&
                   Math.ceil(
@@ -67,20 +84,7 @@ export default async function ProductList() {
                   )}{" "}
                 %
               </td>
-              <td>
-                {product.gender}
-                <br />
-                {product.isBestSeller && (
-                  <span className="badge badge-accent badge-sm">
-                    Bestseller
-                  </span>
-                )}
-                {product.isNewProduct && (
-                  <span className="badge badge-success badge-sm">
-                    New product
-                  </span>
-                )}
-              </td>
+
               <td>
                 <span className="badge badge-ghost badge-lg">
                   {product.amount}
@@ -96,7 +100,9 @@ export default async function ProductList() {
                     className="menu dropdown-content z-[1] w-52 rounded-box bg-base-100 p-2 shadow"
                   >
                     <li>
-                      <a>Update</a>
+                      <Link href={`/admin/add-product/edit/${product.id}`}>
+                        Update
+                      </Link>
                     </li>
                     <li className="text-error">
                       <a>Delete</a>

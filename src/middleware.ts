@@ -20,6 +20,7 @@ async function isAuthenticated(req: NextRequest) {
   const [username, password] = Buffer.from(authHeader.split(" ")[1], "base64")
     .toString()
     .split(":"); // you will get - 'username:password'
+  console.log(username, password, authHeader);
 
   // console.log('get secure pass for you ENV', isValidPassword(password, 'dkfddf'))
 

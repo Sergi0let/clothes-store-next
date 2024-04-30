@@ -21,7 +21,7 @@ model Products {
   isBestSeller           Boolean
   isNewProduct           Boolean
   reviews                Int?
-  amount                 String         @default("0")
+  amount                 Int?
   createdAt              DateTime       @default(now())
   updatedAt              DateTime       @updatedAt
   CartItem               CartItem[]

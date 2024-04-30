@@ -1,25 +1,13 @@
 import { Routes } from "@/constants";
-import Link from "next/link";
-import React from "react";
+import NavLink from "./Nav";
 
 export default function Header() {
   return (
     <div className="navbar bg-neutral text-neutral-content">
-      <Link href={Routes.HOME} className="btn btn-ghost text-xl">
-        HOME
-      </Link>
-      <Link
-        href={Routes.ADMIN + Routes.ADDPRODACT}
-        className="btn btn-ghost text-xl"
-      >
-        ADD PRODUCT
-      </Link>
-      <Link
-        href={Routes.ADMIN + Routes.LISTPRODACT}
-        className="btn btn-ghost text-xl"
-      >
-        LIST PRODUCTS
-      </Link>
+      <NavLink href={Routes.HOME}>HOME</NavLink>
+      <NavLink href={Routes.ADMIN}>DASHBOARD</NavLink>
+      <NavLink href={Routes.ADMIN + Routes.ADDPRODACT}>ADD PRODUCT</NavLink>
+      <NavLink href={Routes.ADMIN + Routes.LISTPRODACT}>LIST PRODUCTS</NavLink>
     </div>
   );
 }

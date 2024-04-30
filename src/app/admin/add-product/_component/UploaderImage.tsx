@@ -8,7 +8,6 @@ import {
   uploadBytesResumable,
 } from "firebase/storage";
 import React, { ChangeEvent, useEffect, useState } from "react";
-import SubminBtn from "./SubminBtn";
 
 const storage = getStorage(app);
 
@@ -161,10 +160,6 @@ export default function UploaderImage() {
           placeholder={imageUrlSecond ? "Upload" : "Not load"}
         />
       </div>
-
-      <SubminBtn disabled={!(imageUrl && imageUrlSecond)} className="btn-block">
-        Submit
-      </SubminBtn>
     </>
   );
 }
