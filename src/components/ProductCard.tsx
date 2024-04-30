@@ -17,7 +17,7 @@ type ProductCardProps = {
   price: number;
   imageUrl: string;
   id: string;
-  amount: string;
+  amount: number | null;
   description: string;
   imageUrlSecond: string;
   isBestSeller?: boolean;
@@ -126,19 +126,19 @@ export default function ProductCard({
           </span>
         </div>
 
-        {+amount === 0 && (
+        {amount === 0 && (
           <div className="my-3 flex gap-2 text-sm font-bold text-error">
             <Image src={ImgSold} alt="sold" width={16} height={16} />
             Sold out
           </div>
         )}
-        {+amount <= 5 && +amount > 0 && (
+        {!!amount && amount <= 5 && amount > 0 && (
           <div className="my-3 flex gap-2 text-sm font-bold text-warning">
             <Image src={ImgHurry} alt="hurryup" width={16} height={16} />
             Hurry up! Only {amount} in stock
           </div>
         )}
-        {+amount > 5 && (
+        {!!amount && amount > 5 && (
           <div className="my-3 flex gap-2 text-sm font-bold text-success">
             <Image src={ImgCheck} alt="checkMark" width={16} height={16} />
             In stock
