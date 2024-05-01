@@ -2,7 +2,7 @@
 
 import SubminBtn from "./SubminBtn";
 import { useFormState } from "react-dom";
-import { addProduct } from "../actions";
+import { addProduct, updateProduct } from "../../actions";
 import { ChangeEvent, useEffect, useState } from "react";
 import {
   getDownloadURL,
@@ -22,7 +22,10 @@ export default function ProductForm({
 }: {
   product?: Products | null;
 }) {
-  const [error, action] = useFormState(addProduct, {});
+  const [error, action] = useFormState(
+    product == null ? addProduct : updateProduct.bind(null, product.id),
+    {},
+  );
 
   const [normalizePrice, setNormalizePrice] = useState<number | undefined>(
     product?.price,
@@ -119,6 +122,7 @@ export default function ProductForm({
   }, [file, fileSecond]);
 
   const handleChangeFile = (e: ChangeEvent<HTMLInputElement>) => {
+    setImageUrl("");
     if (e.target.files) {
       const selectedFile = e.target.files[0];
       if (selectedFile) {
@@ -128,6 +132,7 @@ export default function ProductForm({
   };
 
   const handleSecondFileChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setImageUrlSecond("");
     if (e.target.files) {
       const selectedFile = e.target.files[0];
       if (selectedFile) {
@@ -375,7 +380,6 @@ export default function ProductForm({
           placeholder={imageUrlSecond ? "Upload" : "Not load"}
         />
       </div>
-      {/* <UploaderImage /> */}
       <SubminBtn
         imgOne={imageUrl}
         imgSec={imageUrlSecond}

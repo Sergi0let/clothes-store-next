@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 import { prisma } from "@/lib/db/prisma";
 
-import CardList from "@/components/Lists/CardList";
 import Search from "@/components/Header/_components/Search";
 import SearchList from "./_components/SearchList";
 

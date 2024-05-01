@@ -1,39 +1,117 @@
 "use server";
 
-// import { prisma } from "@/lib/db/prisma";
-// import { revalidatePath } from "next/cache";
+import { prisma } from "@/lib/db/prisma";
+import { z } from "zod";
+import { revalidatePath } from "next/cache";
+import { notFound, redirect } from "next/navigation";
+import { Routes } from "@/constants";
 
-// export async function addProduct(formData: FormData) {
-//   const name = formData.get("name")?.toString();
-//   const gender = formData.get("gender")?.toString();
-//   const category = formData.get("category")?.toString();
-//   const description = formData.get("description")?.toString();
-//   const price = Number(formData.get("price") || 0);
-//   const discountPrice = Number(formData.get("discountPrice") || 0);
-//   const imageUrl = formData.get("imageUrl")?.toString();
-//   const isNewProduct = formData.get("isNewProduct") === "true";
-//   const isBestSeller = formData.get("isBestSeller") === "true";
-//   const amount = formData.get("amount")?.toString() || "0";
+const addSchema = z.object({
+  name: z.string().min(1),
+  gender: z.string().min(1),
+  category: z.string().min(1),
+  description: z.string().min(1),
+  price: z.coerce.number().int().min(1),
+  discountPrice: z.coerce.number().int().min(1),
+  imageUrl: z.string().min(1),
+  imageUrlSecond: z.string().min(1),
+  isNewProduct: z.string().transform((value) => value === "true"),
+  isBestSeller: z.string().transform((value) => value === "true"),
+  amount: z.coerce.number().int().min(1),
+});
 
-//   if (!name || !gender || !category || !description || !price || !imageUrl) {
-//     throw Error("Missing required fields");
-//   }
+export async function addProduct(state: unknown, formData: FormData) {
+  const result = addSchema.safeParse(Object.fromEntries(formData.entries()));
 
-//   await prisma.products.create({
-//     data: {
-//       name,
-//       gender,
-//       category,
-//       description,
-//       price,
-//       discountPrice,
-//       imageUrl,
-//       isAvailableForPurchase: true,
-//       isBestSeller,
-//       isNewProduct,
-//       amount,
-//     },
-//   });
+  if (result.success === false) {
+    return result.error.formErrors.fieldErrors;
+  }
 
-//   revalidatePath("/admin/add-product");
-// }
+  const data = result.data;
+
+  await prisma.products.create({
+    data: {
+      name: data.name,
+      gender: data.gender,
+      category: data.category,
+      description: data.description,
+      price: data.price,
+      discountPrice: data.discountPrice,
+      imageUrl: data.imageUrl,
+      imageUrlSecond: data.imageUrlSecond,
+      isAvailableForPurchase: true,
+      isBestSeller: data.isBestSeller,
+      isNewProduct: data.isNewProduct,
+      amount: data.amount,
+    },
+  });
+
+  revalidatePath(Routes.ADMIN + Routes.ADDPRODACT);
+  redirect(Routes.ADMIN + Routes.LISTPRODACT + Routes.ALL);
+}
+
+export async function updateProduct(
+  id: string,
+  prevState: unknown,
+  formData: FormData,
+) {
+  const result = addSchema.safeParse(Object.fromEntries(formData.entries()));
+
+  if (result.success === false) {
+    return result.error.formErrors.fieldErrors;
+  }
+
+  const data = result.data;
+
+  const product = await prisma.products.findUnique({ where: { id } });
+
+  if (product == null) return notFound();
+
+  await prisma.products.update({
+    where: { id: product.id },
+    data: {
+      name: data.name,
+      gender: data.gender,
+      category: data.category,
+      description: data.description,
+      price: data.price,
+      discountPrice: data.discountPrice,
+      imageUrl: data.imageUrl,
+      imageUrlSecond: data.imageUrlSecond,
+      isAvailableForPurchase: true,
+      isBestSeller: data.isBestSeller,
+      isNewProduct: data.isNewProduct,
+      amount: data.amount,
+    },
+  });
+
+  revalidatePath(Routes.ADMIN + Routes.LISTPRODACT + Routes.ALL);
+  redirect(Routes.ADMIN + Routes.LISTPRODACT + Routes.ALL);
+}
+
+export async function deleteProduct(id: string) {
+  await prisma.products.delete({ where: { id } });
+  revalidatePath(Routes.ADMIN + Routes.LISTPRODACT + Routes.ALL);
+}
+
+export async function deleteUser(id: string) {
+  await prisma.user.delete({ where: { id } });
+  revalidatePath(Routes.ADMIN + Routes.USERS);
+}
+
+export async function toggleProductAvailable(
+  id: string,
+  isAvailableForPurchase: boolean,
+) {
+  await prisma.products.update({
+    where: { id },
+    data: { isAvailableForPurchase },
+  });
+  revalidatePath(Routes.ADMIN + Routes.LISTPRODACT + Routes.ALL);
+}
+
+export async function getAllProduct() {
+  await prisma.products.findMany({
+    orderBy: { createdAt: "desc" },
+  });
+}

@@ -1,8 +1,8 @@
-import { Routes } from "@/constants";
+import Link from "next/link";
 import { prisma } from "@/lib/db/prisma";
+import { Routes } from "@/constants";
 import { formatNumber } from "@/lib/format";
 import { CircleCheckBig, CircleX, CircleUserRound } from "lucide-react";
-import Link from 'next/link';
 
 async function getProductData() {
   const [activeCount, noActiveCount] = await Promise.all([
@@ -52,7 +52,7 @@ export default async function AdminDashboardPage() {
         </div>
       </div>
       <Link
-        href={Routes.ADMIN + Routes.LISTPRODACT}
+        href={Routes.ADMIN + Routes.LISTPRODACT + Routes.ALL}
         className="card w-96 bg-base-100 shadow-2xl"
       >
         <div className="card-body">
@@ -74,18 +74,29 @@ export default async function AdminDashboardPage() {
         </div>
       </Link>
 
-      <div className="card w-96 bg-base-100 shadow-2xl">
+      <Link
+        href={Routes.ADMIN + Routes.USERS}
+        className="card w-96 bg-base-100 shadow-2xl"
+      >
         <div className="card-body">
           <h2 className="card-title">Users</h2>
           <div className="flex gap-2">
-            <span className="font-bold text-success">
-              {formatNumber(userAmount)}
-            </span>
+            {userAmount ? (
+              <span className="font-bold text-success">
+                {formatNumber(userAmount)}
+              </span>
+            ) : (
+              "No"
+            )}
             <span className="flex-1">In active</span>
-            <CircleUserRound color="#24BF33" />
+            {userAmount ? (
+              <CircleUserRound color="#24BF33" />
+            ) : (
+              <CircleX color="#BB1D1D" />
+            )}
           </div>
         </div>
-      </div>
+      </Link>
     </div>
   );
 }

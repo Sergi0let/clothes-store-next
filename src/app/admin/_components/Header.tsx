@@ -7,7 +7,10 @@ export default function Header() {
       <NavLink href={Routes.HOME}>HOME</NavLink>
       <NavLink href={Routes.ADMIN}>DASHBOARD</NavLink>
       <NavLink href={Routes.ADMIN + Routes.ADDPRODACT}>ADD PRODUCT</NavLink>
-      <NavLink href={Routes.ADMIN + Routes.LISTPRODACT}>LIST PRODUCTS</NavLink>
+      <NavLink href={Routes.ADMIN + Routes.LISTPRODACT + Routes.ALL}>
+        LIST PRODUCTS
+      </NavLink>
+      <NavLink href={Routes.ADMIN + Routes.USERS}>USERS</NavLink>
     </div>
   );
 }
