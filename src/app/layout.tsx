@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
+import { Mulish } from "next/font/google";
 
 import "./globals.css";
 
-const poppins = Poppins({
-  subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+const mulish = Mulish({
+  subsets: ["latin", "cyrillic"],
+  weight: ["200", "300", "400", "500", "600", "700", "800", "900"],
 });
 
 export const metadata: Metadata = {
@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="uk">
-      <body className={`${poppins.className} relative antialiased`}>
+      <body className={`${mulish.className} relative antialiased`}>
         {children}
       </body>
     </html>

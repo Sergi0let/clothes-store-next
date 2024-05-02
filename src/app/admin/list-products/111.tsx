@@ -1,5 +1,5 @@
 import { prisma } from "@/lib/db/prisma";
-import ProductList from "../../_components/ProductList";
+import ProductList from "../_components/ProductList";
 
 export default async function AllPage() {
   const [product, count] = await Promise.all([

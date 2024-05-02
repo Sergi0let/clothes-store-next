@@ -9,8 +9,7 @@ export default function AdminLayout({
   return (
     <div>
       <Header />
-
-      <div className="p-6">{children}</div>
+      <div className="min-h-[400px] p-6">{children}</div>
     </div>
   );
 }

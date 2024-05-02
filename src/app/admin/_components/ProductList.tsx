@@ -5,7 +5,7 @@ import { formatPrice } from "@/lib/format";
 import Image from "next/image";
 import { CircleCheckBig, CirclePercent, CircleX } from "lucide-react";
 import { Products } from "@prisma/client";
-import { deleteProduct } from '../actions';
+import { deleteProduct } from "../actions";
 
 type ProductListProps = {
   products: Products[];
@@ -14,7 +14,7 @@ type ProductListProps = {
 
 export default function ProductList({ products, count }: ProductListProps) {
   return (
-    <table className="table">
+    <table className="table min-h-full">
       {/* head */}
       <caption className="py-4 text-lg ">
         <b>Amount</b> <em>{count}</em>

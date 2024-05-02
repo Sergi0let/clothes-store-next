@@ -6,7 +6,7 @@ export default function ProductLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="overflow-x-auto">
+    <div className="min-h-[400px] overflow-x-auto">
       <Navbar />
       {children}
     </div>
