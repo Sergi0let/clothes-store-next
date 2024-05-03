@@ -13,7 +13,6 @@ import {
 import { app } from "@/utils/firebase";
 import { formatCurrency } from "@/lib/format";
 import { Products } from "@prisma/client";
-// import UploaderImage from "./UploaderImage";
 
 const storage = getStorage(app);
 

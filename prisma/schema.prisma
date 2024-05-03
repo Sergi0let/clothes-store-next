@@ -10,9 +10,9 @@ datasource db {
 model Products {
   id                     String         @id @default(auto()) @map("_id") @db.ObjectId
   name                   String
-  gender                 String
+  gender                 Gender         @default(men)
   description            String
-  category               String
+  category               Category
   price                  Int
   discountPrice          Int
   imageUrl               String
@@ -28,6 +28,18 @@ model Products {
   FavoriteItem           FavoriteItem[]
 
   @@map("products")
+}
+
+enum Gender {
+  men
+  women
+}
+
+enum Category {
+  shirt
+  sweatshirt
+  hoodie
+  jogger
 }
 
 model Favorite {

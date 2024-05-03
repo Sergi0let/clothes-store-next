@@ -8,13 +8,13 @@ import { Routes } from "@/constants";
 
 const addSchema = z.object({
   name: z.string().min(1),
-  gender: z.string().min(1),
-  category: z.string().min(1),
+  gender: z.enum(["men", "women"]),
+  category: z.enum(["shirt", "sweatshirt", "hoodie", "jogger"]),
   description: z.string().min(1),
   price: z.coerce.number().int().min(1),
-  discountPrice: z.coerce.number().int().min(1),
+  discountPrice: z.coerce.number().int(),
   imageUrl: z.string().min(1),
-  imageUrlSecond: z.string().min(1),
+  imageUrlSecond: z.string(),
   isNewProduct: z.string().transform((value) => value === "true"),
   isBestSeller: z.string().transform((value) => value === "true"),
   amount: z.coerce.number().int().min(1),

@@ -3,10 +3,6 @@ import { Routes } from "@/constants";
 import { ListChecks, ShieldHalf, ShieldPlus } from "lucide-react";
 
 export default function Navbar() {
-  // const allPathProducts = Routes.ADMIN + Routes.LISTPRODACT + Routes.ALL;
-  // const menPathProducts = Routes.ADMIN + Routes.LISTPRODACT + Routes.MEN;
-  // const womenPathProducts = Routes.ADMIN + Routes.LISTPRODACT + Routes.WOMEN;
-
   return (
     <ul className="menu space-x-2 rounded-box bg-base-200 lg:menu-horizontal">
       <li className="dropdown dropdown-hover">
