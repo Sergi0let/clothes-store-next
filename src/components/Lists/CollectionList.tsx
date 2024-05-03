@@ -6,7 +6,7 @@ export default function CollectionList({ gender }: { gender: string }) {
   return (
     <div className="mb-10 grid grid-cols-2 gap-4 md:mb-12 md:grid-cols-4 md:gap-6">
       <Link
-        href={`/${gender}${Routes.SHIRTS}`}
+        href={`/${gender}${Routes.SHIRTS as "shirt"}`}
         className="object-covers relative block max-w-[312px] "
       >
         <Image

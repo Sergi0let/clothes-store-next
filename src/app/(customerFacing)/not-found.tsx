@@ -2,7 +2,7 @@ import StartShoppingBtn from "@/components/Buttons/StartShoppingBtn";
 
 import RecentlyViewProducts from "@/components/Lists/RecentlyViewProducts";
 
-export default function NotFound() {
+export default function NotFoundPage() {
   return (
     <div className="flex w-full flex-col items-center justify-center py-14 md:py-28">
       <svg
