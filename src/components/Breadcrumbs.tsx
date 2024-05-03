@@ -21,11 +21,12 @@ export default function Breadcrumbs({
             aria-current={breadcrumb.active}
             className={clsx(
               breadcrumb.active ? "text-primary" : "text-secondary",
+              "capitalize",
             )}
           >
             <Link href={breadcrumb.href}>{breadcrumb.label}</Link>
             {index < breadcrumbs.length - 1 ? (
-              <span className="mx-3 inline-block">/</span>
+              <span className="mx-3 inline-block ">/</span>
             ) : null}
           </li>
         ))}

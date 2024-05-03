@@ -8,8 +8,8 @@ import { Category } from "@prisma/client";
 import { SlidersHorizontal } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Sweatshirts page",
-  description: "About women sweatshirts",
+  title: "Category page",
+  description: "About women clothes",
 };
 
 export default async function CategoryPage({

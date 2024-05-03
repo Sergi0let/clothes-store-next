@@ -1,24 +1,34 @@
 import type { Metadata } from "next";
 import { prisma } from "@/lib/db/prisma";
-import { Routes } from "@/constants";
 
 import Breadcrumbs from "@/components/Breadcrumbs";
-import CategoryList from "@/components/Lists/CategoryList";
-import CollectionList from "@/components/Lists/CollectionList";
+import CardListCategory from "@/components/Lists/CategoryList";
+import { Routes } from "@/constants";
+import { Category } from "@prisma/client";
 import { SlidersHorizontal } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Women page",
-  description: "About women clothes",
+  title: "Category page",
+  description: "About men clothes",
 };
 
-export default async function WomenPage() {
+export default async function CategoryPage({
+  params,
+}: {
+  params: { category: string };
+}) {
   const [products, count] = await Promise.all([
     prisma.products.findMany({
-      where: { gender: { equals: "women" } },
+      where: {
+        gender: "men",
+        category: params.category as Category,
+      },
     }),
     prisma.products.aggregate({
-      where: { gender: { equals: "women" } },
+      where: {
+        gender: "men",
+        category: params.category as Category,
+      },
       _count: true,
     }),
   ]);
@@ -29,20 +39,21 @@ export default async function WomenPage() {
         breadcrumbs={[
           { label: "Home", href: Routes.HOME },
           {
-            label: "Women",
-            href: Routes.WOMEN,
-            active: true,
+            label: "Men",
+            href: Routes.MEN,
           },
         ]}
       />
-      <CollectionList gender="women" />
+
       <div className="mb-6 gap-6 md:mb-12 md:flex">
-        <h1 className="text-2xl font-medium md:text-4xl">For women</h1>
+        <h1 className="text-2xl font-medium uppercase md:text-4xl">
+          {params.category}
+        </h1>
         <div className="text-lg md:content-end md:align-bottom">
           {count._count || "No"} Products
         </div>
       </div>
-      <div className="mb-8 flex items-center md:hidden">
+      <div className="mb-8 md:hidden">
         <button>
           <SlidersHorizontal />
         </button>
@@ -63,7 +74,7 @@ export default async function WomenPage() {
             <div className="skeleton h-4 w-full"></div>
           </div>
         </div>
-        <CategoryList productsDisplay={products} />
+        <CardListCategory productsDisplay={products} />
       </div>
     </main>
   );
