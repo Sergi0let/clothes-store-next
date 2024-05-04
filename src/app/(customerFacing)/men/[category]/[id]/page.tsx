@@ -7,6 +7,7 @@ import { Category } from "@prisma/client";
 import { Routes } from "@/constants";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import ProductCard from "@/components/ProductCard";
+import { ProductCardPageSkeleton } from "@/components/Skeletons/ProductCardSkeleton";
 
 type ProductPage = {
   params: { category: Category; id: string };
