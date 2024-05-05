@@ -7,6 +7,7 @@ import MenHero from "@/assets/hero/hero-men.png";
 import WomenHero from "@/assets/hero/hero-women.png";
 import { cache } from "@/lib/cashe";
 import Image from "next/image";
+import LoadingPage from "./loading";
 
 type HomeProps = {
   searchParams: { page: string };

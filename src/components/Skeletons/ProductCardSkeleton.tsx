@@ -9,9 +9,20 @@ export default function ProductCardSkeleton() {
   );
 }
 
+export function ListCardSkeleton(): JSX.Element {
+  return (
+    <div className="m-auto grid max-w-7xl gap-4 pb-8 pt-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      <ProductCardSkeleton />
+      <ProductCardSkeleton />
+      <ProductCardSkeleton />
+      <ProductCardSkeleton />
+    </div>
+  );
+}
+
 export function ProductCardPageSkeleton() {
   return (
-    <>
+    <div className="m-auto max-w-7xl px-4">
       <div className="mt-8 flex">
         <div className="skeleton mr-2 h-4 w-14"></div>
         <div className="skeleton mr-2 h-4 w-14"></div>
@@ -53,6 +64,6 @@ export function ProductCardPageSkeleton() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

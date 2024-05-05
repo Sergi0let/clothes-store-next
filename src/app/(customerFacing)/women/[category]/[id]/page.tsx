@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { cache } from "react";
+import { cache, Suspense } from "react";
 import { prisma } from "@/lib/db/prisma";
 import { notFound } from "next/navigation";
 
@@ -7,6 +7,7 @@ import { Category } from "@prisma/client";
 import { Routes } from "@/constants";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import ProductCard from "@/components/ProductCard";
+import ProductCardSkeleton from "@/components/Skeletons/ProductCardSkeleton";
 
 type ProductPage = {
   params: { category: Category; id: string };
@@ -45,31 +46,33 @@ export default async function ProductPage({
 
   return (
     <main className="m-auto max-w-7xl px-4">
-      <Breadcrumbs
-        breadcrumbs={[
-          { label: "Home", href: Routes.HOME },
-          {
-            label: "Women",
-            href: Routes.WOMEN,
-          },
-          {
-            label: category,
-            href: Routes.WOMEN + Routes[category.toUpperCase()],
-          },
-        ]}
-      />
-      <ProductCard
-        amount={product?.amount}
-        description={product?.description}
-        discountPrice={product?.discountPrice}
-        id={product.id}
-        imageUrl={product?.imageUrl}
-        isBestSeller={product?.isBestSeller}
-        isNewProduct={product?.isNewProduct}
-        name={product?.name}
-        price={product?.price}
-        imageUrlSecond={product?.imageUrlSecond || ""}
-      />
+      <Suspense fallback={<ProductCardSkeleton />}>
+        <Breadcrumbs
+          breadcrumbs={[
+            { label: "Home", href: Routes.HOME },
+            {
+              label: "Women",
+              href: Routes.WOMEN,
+            },
+            {
+              label: category,
+              href: Routes.WOMEN + Routes[category.toUpperCase()],
+            },
+          ]}
+        />
+        <ProductCard
+          amount={product?.amount}
+          description={product?.description}
+          discountPrice={product?.discountPrice}
+          id={product.id}
+          imageUrl={product?.imageUrl}
+          isBestSeller={product?.isBestSeller}
+          isNewProduct={product?.isNewProduct}
+          name={product?.name}
+          price={product?.price}
+          imageUrlSecond={product?.imageUrlSecond || ""}
+        />
+      </Suspense>
     </main>
   );
 }
