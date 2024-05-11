@@ -1,13 +1,17 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import Image from "next/image";
 import { prisma } from "@/lib/db/prisma";
 
 import CardList from "@/components/Lists/CardList";
-import Link from "next/link";
 import PaginationBar from "@/components/PaginationBar";
 import MenHero from "@/assets/hero/hero-men.png";
 import WomenHero from "@/assets/hero/hero-women.png";
-import { cache } from "@/lib/cashe";
-import Image from "next/image";
-import LoadingPage from "./loading";
+
+export const metadata: Metadata = {
+  title: "Modern Clothes shop",
+  description: "Shop description",
+};
 
 type HomeProps = {
   searchParams: { page: string };
@@ -27,6 +31,7 @@ export default async function Home({
     skip: (currentPage - 1) * pageSize,
     take: pageSize,
   });
+
   return (
     <main>
       <div className="m-auto flex max-w-[1400px] flex-col sm:flex-row md:min-h-[560px] lg:min-h-[700px]">
@@ -39,7 +44,7 @@ export default async function Home({
             className="absolute right-0 top-0 aspect-auto object-cover"
           />
           <div className="hero-content content-end text-neutral-content">
-            <div className="max-w-md">
+            <div className="flex max-w-md flex-col items-center">
               <h2 className="mb-5 text-2xl font-bold text-base-100 md:text-6xl">
                 MEN
               </h2>
@@ -66,7 +71,7 @@ export default async function Home({
             className="absolute right-0 top-0 aspect-auto object-cover"
           />
           <div className="hero-content content-end text-neutral-content">
-            <div className="max-w-md">
+            <div className="flex max-w-md flex-col items-center">
               <h2 className="mb-5 text-2xl font-bold text-base-100 md:text-6xl">
                 WOMEN
               </h2>

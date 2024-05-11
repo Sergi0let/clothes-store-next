@@ -1,5 +1,5 @@
-import { ProductCardPageSkeleton } from "@/components/Skeletons/ProductCardSkeleton";
+import { ProductCardPageSkeleton } from "@/components/Skeletons/Pages";
 
-export default function LoadingPage() {
+export default function LoadingProductPage() {
   return <ProductCardPageSkeleton />;
 }

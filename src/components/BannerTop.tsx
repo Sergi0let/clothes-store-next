@@ -13,7 +13,7 @@ export default function BannerTop() {
 
   return (
     <>
-      <div className="m-auto flex h-5 justify-between bg-green-50 p-1 md:h-[48px] md:p-3">
+      <div className="m-auto flex h-5 items-center justify-between bg-green-50 p-1 md:h-[48px] md:p-3">
         <div />
         <p className="flex gap-2 text-xs md:text-sm ">
           <span className="whitespace-nowrap font-bold text-blue-800">
